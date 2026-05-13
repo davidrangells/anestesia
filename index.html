@@ -85,7 +85,7 @@
     border-bottom: 1px solid rgba(228,233,242,0.6);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-  .brand { display: flex; align-items: center; gap: 6px; }
+  .brand { display: flex; align-items: center; gap: 6px; margin-left: -5px; }
   .brand img { height: 34px; width: auto; }
   .brand .name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
   .brand .name span { color: var(--blue); }
@@ -332,6 +332,7 @@
   .quote p { color: var(--ink-2); font-size: 15px; line-height: 1.6; margin-bottom: 22px; flex: 1; }
   .quote .who { display: flex; align-items: center; gap: 12px; }
   .quote .avatar { width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; object-fit: cover; border: 2px solid white; box-shadow: var(--shadow-2); }
+  .avatar-init { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: var(--sky); color: var(--blue-3); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; letter-spacing: 0.03em; }
   .quote .name { font-weight: 600; font-size: 14px; color: var(--ink); }
   .quote .role { font-size: 12.5px; color: var(--muted); }
   @media (max-width: 880px) { .testi { grid-template-columns: 1fr; } }
@@ -928,7 +929,7 @@
         <div class="stars">★★★★★</div>
         <p>"Resolvi quase 2.000 questões nos últimos meses e a evolução foi absurda. O painel me ajudou a identificar que minha fraqueza era farmacologia e direcionei o estudo. Passei na TEA."</p>
         <div class="who">
-          <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana Rios" />
+          <div class="avatar-init">MR</div>
           <div>
             <div class="name">Mariana Rios</div>
             <div class="role">Aprovada TEA 2025</div>
@@ -940,7 +941,7 @@
         <div class="stars">★★★★★</div>
         <p>"A plataforma é muito mais rápida e organizada do que as que usei antes. Os comentários são curtos, diretos e com referência. Perfeito para quem está no R2 e tem pouco tempo."</p>
         <div class="who">
-          <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Felipe Tavares" />
+          <div class="avatar-init">FT</div>
           <div>
             <div class="name">Felipe Tavares</div>
             <div class="role">Residente R2 · Anestesiologia</div>
@@ -952,7 +953,7 @@
         <div class="stars">★★★★★</div>
         <p>"Estudei pela Anestesia Questões nos 4 meses antes da TSA. Fazia simulado todo dia no caminho do trabalho, pelo celular. A sensação na prova era de já ter visto tudo."</p>
         <div class="who">
-          <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Camila Peixoto" />
+          <div class="avatar-init">CP</div>
           <div>
             <div class="name">Camila Peixoto</div>
             <div class="role">Aprovada TSA 2024</div>
