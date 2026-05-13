@@ -10,9 +10,11 @@
 <style>
   :root {
     --ink: #0B1B33; --ink-2: #1B2A44; --muted: #5A6A85;
-    --line: #E4E9F2; --line-2: #EEF2F8; --bg: #FBFCFE; --card: #FFFFFF;
+    --line: #E4E9F2; --line-2: #EEF2F8; --bg: #FBFCFE;
     --blue: #2A6DF4; --blue-2: #4F8CFF; --blue-3: #1E4FBF;
     --sky: #E8F0FE; --sky-2: #F2F6FE;
+    --shadow-1: 0 1px 0 rgba(11,27,51,0.04), 0 1px 2px rgba(11,27,51,0.04);
+    --shadow-2: 0 8px 24px -10px rgba(15,42,99,0.12), 0 1px 0 rgba(11,27,51,0.04);
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
@@ -22,32 +24,46 @@
   .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
 
   /* Nav */
-  .nav { position: sticky; top: 0; z-index: 60; backdrop-filter: saturate(140%) blur(12px); background: rgba(251,252,254,0.82); border-bottom: 1px solid rgba(228,233,242,0.6); }
+  .nav { position: sticky; top: 0; z-index: 60; backdrop-filter: saturate(140%) blur(12px); background: rgba(251,252,254,0.88); border-bottom: 1px solid rgba(228,233,242,0.7); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
   .brand { display: flex; align-items: center; gap: 6px; }
   .brand img { height: 34px; width: auto; }
   .brand .name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
   .brand .name span { color: var(--blue); }
-  .btn { display: inline-flex; align-items: center; justify-content: center; height: 42px; padding: 0 18px; border-radius: 12px; font-weight: 600; font-size: 14px; transition: transform .15s, background .2s; white-space: nowrap; }
-  .btn-primary { background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: white; box-shadow: 0 10px 24px -10px rgba(42,109,244,0.55); }
-  .btn-ghost { background: white; color: var(--ink); border: 1px solid var(--line); }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: 12px; font-weight: 600; font-size: 14px; transition: transform .15s, background .2s, border-color .2s; white-space: nowrap; font-family: inherit; }
+  .btn-primary { background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: white; box-shadow: 0 8px 20px -8px rgba(42,109,244,0.5); }
+  .btn-primary:hover { transform: translateY(-1px); }
+  .btn-ghost { background: white; color: var(--ink-2); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #C7D5EF; }
 
-  /* Legal content */
-  .legal-wrap { max-width: 760px; margin: 0 auto; padding: 64px 28px 100px; }
-  .legal-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); background: var(--sky); padding: 6px 12px; border-radius: 999px; display: inline-block; margin-bottom: 24px; }
-  .legal-wrap h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.03em; color: var(--ink); margin: 0 0 8px; }
-  .legal-date { font-size: 14px; color: var(--muted); margin-bottom: 48px; display: block; }
-  .legal-wrap h2 { font-size: 18px; font-weight: 700; color: var(--ink); margin: 40px 0 12px; letter-spacing: -0.01em; }
-  .legal-wrap p { color: #374151; font-size: 15.5px; line-height: 1.75; margin: 0 0 16px; }
-  .legal-wrap ul { color: #374151; font-size: 15.5px; line-height: 1.75; margin: 0 0 16px; padding-left: 20px; }
-  .legal-wrap ul li { margin-bottom: 8px; }
-  .legal-wrap a { color: var(--blue); text-decoration: underline; }
-  .divider { border: 0; border-top: 1px solid var(--line-2); margin: 48px 0 0; }
+  /* Hero */
+  .hero { background: linear-gradient(160deg, var(--sky) 0%, var(--sky-2) 40%, var(--bg) 100%); border-bottom: 1px solid var(--line); padding: 64px 0 56px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -200px; top: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(79,140,255,0.12), transparent 60%); pointer-events: none; }
+  .hero-inner { max-width: 760px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue-3); background: white; padding: 6px 14px; border-radius: 999px; border: 1px solid #DCE7FB; box-shadow: var(--shadow-1); margin-bottom: 20px; }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 3px rgba(42,109,244,.15); }
+  .hero h1 { font-size: clamp(32px, 4vw, 48px); font-weight: 800; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 12px; line-height: 1.08; }
+  .hero-date { font-size: 14px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+  .hero-date svg { color: var(--blue); }
+
+  /* Content */
+  .content { max-width: 760px; margin: 0 auto; padding: 48px 28px 96px; }
+  .section-card { background: white; border: 1px solid var(--line); border-radius: 18px; padding: 28px 32px; margin-bottom: 14px; box-shadow: var(--shadow-1); transition: border-color .2s; }
+  .section-card:hover { border-color: #C7D5EF; }
+  .section-card h2 { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 14px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.01em; }
+  .section-card h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: var(--sky); color: var(--blue); font-size: 12px; font-weight: 700; flex-shrink: 0; }
+  .section-card p { color: #374151; font-size: 15px; line-height: 1.75; margin: 0 0 12px; }
+  .section-card p:last-child { margin-bottom: 0; }
+  .section-card ul { color: #374151; font-size: 15px; line-height: 1.75; margin: 10px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .section-card ul li { display: flex; gap: 10px; align-items: flex-start; }
+  .section-card ul li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); margin-top: 9px; flex-shrink: 0; }
+  .section-card a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; }
 
   /* Footer */
-  footer { background: white; border-top: 1px solid var(--line); padding: 40px 0; }
-  .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  .foot-bot .copy { font-size: 13px; color: var(--muted); }
+  footer { background: white; border-top: 1px solid var(--line); padding: 36px 0; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot-copy { font-size: 13px; color: var(--muted); }
   .foot-links { display: flex; gap: 20px; }
   .foot-links a { font-size: 13px; color: var(--muted); }
   .foot-links a:hover { color: var(--blue); }
@@ -61,78 +77,114 @@
       <img src="img/Logo.png" alt="Anestesia Questões" />
       <div class="name">Anestesia<span> Questões</span></div>
     </a>
-    <a class="btn btn-primary" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer">Assinar e Começar Agora</a>
+    <div class="nav-actions">
+      <a class="btn btn-ghost" href="index.html">← Voltar ao início</a>
+      <a class="btn btn-primary" href="https://anestesia-questoes-aluno.vercel.app" target="_blank" rel="noopener noreferrer">Entrar na plataforma</a>
+    </div>
   </div>
 </header>
 
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="dot"></span>Documento Legal</div>
+      <h1>Termos de Uso</h1>
+      <p class="hero-date">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Última atualização: 31 de março de 2026
+      </p>
+    </div>
+  </div>
+</section>
+
 <main>
-  <div class="legal-wrap">
-    <span class="legal-eyebrow">Documento Legal</span>
-    <h1>Termos de Uso</h1>
-    <span class="legal-date">Última atualização: 31 de março de 2026.</span>
+  <div class="content">
 
-    <h2>1. Objeto e abrangência</h2>
-    <p>O Anestesia Questões é uma plataforma educacional online voltada para médicos e residentes em anestesiologia, com foco em preparação para TEA, TSA e residência médica.</p>
-    <p>Estes Termos de Uso se aplicam a todos os visitantes, usuários e membros, cadastrados ou não, que utilizem o site, a plataforma e serviços relacionados.</p>
+    <div class="section-card">
+      <h2><span class="num">1</span>Objeto e abrangência</h2>
+      <p>O Anestesia Questões é uma plataforma educacional online voltada para médicos e residentes em anestesiologia, com foco em preparação para TEA, TSA e residência médica.</p>
+      <p>Estes Termos de Uso se aplicam a todos os visitantes, usuários e membros, cadastrados ou não, que utilizem o site, a plataforma e serviços relacionados.</p>
+    </div>
 
-    <h2>2. Aceitação dos termos</h2>
-    <p>Ao navegar na plataforma, criar conta ou contratar um plano, você declara que leu, compreendeu e concorda com estes Termos de Uso e com a Política de Privacidade.</p>
-    <p>Caso não concorde com as condições deste documento, não utilize os serviços do Anestesia Questões.</p>
+    <div class="section-card">
+      <h2><span class="num">2</span>Aceitação dos termos</h2>
+      <p>Ao navegar na plataforma, criar conta ou contratar um plano, você declara que leu, compreendeu e concorda com estes Termos de Uso e com a Política de Privacidade.</p>
+      <p>Caso não concorde com as condições deste documento, não utilize os serviços do Anestesia Questões.</p>
+    </div>
 
-    <h2>3. Cadastro, conta e segurança</h2>
-    <p>Para acessar funcionalidades privadas, é necessário cadastro com informações verdadeiras, atualizadas e completas.</p>
-    <p>Você é responsável por manter a confidencialidade de login e senha, bem como por todas as atividades realizadas em sua conta.</p>
-    <p>Em caso de suspeita de uso indevido, comunique imediatamente pelo e-mail <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
+    <div class="section-card">
+      <h2><span class="num">3</span>Cadastro, conta e segurança</h2>
+      <p>Para acessar funcionalidades privadas, é necessário cadastro com informações verdadeiras, atualizadas e completas.</p>
+      <p>Você é responsável por manter a confidencialidade de login e senha, bem como por todas as atividades realizadas em sua conta.</p>
+      <p>Em caso de suspeita de uso indevido, comunique imediatamente pelo e-mail <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
+    </div>
 
-    <h2>4. Uso permitido e condutas proibidas</h2>
-    <p>É proibido utilizar a plataforma para:</p>
-    <ul>
-      <li>publicar conteúdo ilícito, ofensivo, difamatório, fraudulento ou que viole direitos de terceiros;</li>
-      <li>tentar obter acesso não autorizado a sistemas, contas, dados ou infraestrutura;</li>
-      <li>distribuir malware, scripts maliciosos ou práticas que comprometam segurança e disponibilidade;</li>
-      <li>copiar, revender, sublicenciar, reproduzir ou explorar comercialmente conteúdo sem autorização;</li>
-      <li>utilizar identidade falsa, personificar terceiros ou fraudar informações de cadastro e pagamento.</li>
-    </ul>
+    <div class="section-card">
+      <h2><span class="num">4</span>Uso permitido e condutas proibidas</h2>
+      <p>É proibido utilizar a plataforma para:</p>
+      <ul>
+        <li>publicar conteúdo ilícito, ofensivo, difamatório, fraudulento ou que viole direitos de terceiros;</li>
+        <li>tentar obter acesso não autorizado a sistemas, contas, dados ou infraestrutura;</li>
+        <li>distribuir malware, scripts maliciosos ou práticas que comprometam segurança e disponibilidade;</li>
+        <li>copiar, revender, sublicenciar, reproduzir ou explorar comercialmente conteúdo sem autorização;</li>
+        <li>utilizar identidade falsa, personificar terceiros ou fraudar informações de cadastro e pagamento.</li>
+      </ul>
+    </div>
 
-    <h2>5. Planos, pagamento e reajustes</h2>
-    <p>O acesso aos serviços pagos depende da contratação de plano disponível no checkout oficial. Você autoriza a cobrança pelos meios de pagamento escolhidos no ato da compra.</p>
-    <p>O Anestesia Questões poderá atualizar preços, planos e condições comerciais a qualquer tempo, com efeitos para novas contratações ou renovações futuras.</p>
+    <div class="section-card">
+      <h2><span class="num">5</span>Planos, pagamento e reajustes</h2>
+      <p>O acesso aos serviços pagos depende da contratação de plano disponível no checkout oficial. Você autoriza a cobrança pelos meios de pagamento escolhidos no ato da compra.</p>
+      <p>O Anestesia Questões poderá atualizar preços, planos e condições comerciais a qualquer tempo, com efeitos para novas contratações ou renovações futuras.</p>
+    </div>
 
-    <h2>6. Cancelamento e reembolso</h2>
-    <p>Nos termos da legislação aplicável, compras realizadas no site podem ser canceladas em até 7 (sete) dias corridos, contados da contratação, com solicitação pelo e-mail <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
-    <p>O reembolso será processado conforme o meio de pagamento utilizado, podendo depender de prazos de operadoras, bancos e intermediadores de pagamento. Para cartão, boleto e PIX, o prazo operacional informado atualmente pode chegar a até 60 (sessenta) dias.</p>
-    <p>Regras específicas de assinatura, renovação e eventuais encargos de cancelamento para planos promocionais ou anuais serão apresentadas no checkout no momento da contratação e passam a integrar este Termo.</p>
+    <div class="section-card">
+      <h2><span class="num">6</span>Cancelamento e reembolso</h2>
+      <p>Nos termos da legislação aplicável, compras realizadas no site podem ser canceladas em até 7 (sete) dias corridos, contados da contratação, com solicitação pelo e-mail <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
+      <p>O reembolso será processado conforme o meio de pagamento utilizado, podendo depender de prazos de operadoras, bancos e intermediadores de pagamento. Para cartão, boleto e PIX, o prazo operacional informado atualmente pode chegar a até 60 (sessenta) dias.</p>
+      <p>Regras específicas de assinatura, renovação e eventuais encargos de cancelamento para planos promocionais ou anuais serão apresentadas no checkout no momento da contratação e passam a integrar este Termo.</p>
+    </div>
 
-    <h2>7. Propriedade intelectual</h2>
-    <p>Todo conteúdo da plataforma, incluindo textos, questões, comentários, layout, identidade visual, vídeos, gráficos, bancos de dados e materiais didáticos, é protegido por direitos autorais e demais normas de propriedade intelectual.</p>
-    <p>Não é permitido copiar, reproduzir, distribuir, adaptar, fazer engenharia reversa ou disponibilizar conteúdo da plataforma sem autorização prévia e expressa.</p>
+    <div class="section-card">
+      <h2><span class="num">7</span>Propriedade intelectual</h2>
+      <p>Todo conteúdo da plataforma, incluindo textos, questões, comentários, layout, identidade visual, vídeos, gráficos, bancos de dados e materiais didáticos, é protegido por direitos autorais e demais normas de propriedade intelectual.</p>
+      <p>Não é permitido copiar, reproduzir, distribuir, adaptar, fazer engenharia reversa ou disponibilizar conteúdo da plataforma sem autorização prévia e expressa.</p>
+    </div>
 
-    <h2>8. Disponibilidade e limitações</h2>
-    <p>O serviço é disponibilizado no estado em que se encontra, podendo sofrer interrupções temporárias, manutenções, atualizações, indisponibilidades ou limitações técnicas.</p>
-    <p>O Anestesia Questões não garante resultado acadêmico específico, aprovação em provas ou ausência total de falhas técnicas, embora adote esforços razoáveis para qualidade e continuidade do serviço.</p>
+    <div class="section-card">
+      <h2><span class="num">8</span>Disponibilidade e limitações</h2>
+      <p>O serviço é disponibilizado no estado em que se encontra, podendo sofrer interrupções temporárias, manutenções, atualizações, indisponibilidades ou limitações técnicas.</p>
+      <p>O Anestesia Questões não garante resultado acadêmico específico, aprovação em provas ou ausência total de falhas técnicas, embora adote esforços razoáveis para qualidade e continuidade do serviço.</p>
+    </div>
 
-    <h2>9. Suspensão e encerramento de conta</h2>
-    <p>O Anestesia Questões poderá suspender ou encerrar contas, com ou sem aviso prévio, em casos de violação destes Termos, uso indevido, fraude, risco à segurança, determinação legal ou inadimplemento.</p>
+    <div class="section-card">
+      <h2><span class="num">9</span>Suspensão e encerramento de conta</h2>
+      <p>O Anestesia Questões poderá suspender ou encerrar contas, com ou sem aviso prévio, em casos de violação destes Termos, uso indevido, fraude, risco à segurança, determinação legal ou inadimplemento.</p>
+    </div>
 
-    <h2>10. Proteção de dados e privacidade</h2>
-    <p>O tratamento de dados pessoais segue a <a href="privacidade.html">Política de Privacidade</a> e a legislação vigente, incluindo a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018).</p>
+    <div class="section-card">
+      <h2><span class="num">10</span>Proteção de dados e privacidade</h2>
+      <p>O tratamento de dados pessoais segue a <a href="privacidade.html">Política de Privacidade</a> e a legislação vigente, incluindo a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018).</p>
+    </div>
 
-    <h2>11. Alterações destes termos</h2>
-    <p>Este documento poderá ser atualizado periodicamente. A versão vigente será sempre publicada nesta página com data de atualização.</p>
-    <p>O uso continuado da plataforma após a publicação de alterações caracteriza concordância com os novos termos.</p>
+    <div class="section-card">
+      <h2><span class="num">11</span>Alterações destes termos</h2>
+      <p>Este documento poderá ser atualizado periodicamente. A versão vigente será sempre publicada nesta página com data de atualização.</p>
+      <p>O uso continuado da plataforma após a publicação de alterações caracteriza concordância com os novos termos.</p>
+    </div>
 
-    <h2>12. Contato e foro</h2>
-    <p>Em caso de dúvidas, solicitações ou notificações, entre em contato em <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
-    <p>Fica eleito o foro da Comarca da Capital do Estado de São Paulo, com renúncia de qualquer outro, para dirimir conflitos relacionados a este Termo, ressalvados os direitos legais do consumidor.</p>
+    <div class="section-card">
+      <h2><span class="num">12</span>Contato e foro</h2>
+      <p>Em caso de dúvidas, solicitações ou notificações, entre em contato em <a href="mailto:contato@anestesiaquestoes.com.br">contato@anestesiaquestoes.com.br</a>.</p>
+      <p>Fica eleito o foro da Comarca da Capital do Estado de São Paulo, com renúncia de qualquer outro, para dirimir conflitos relacionados a este Termo, ressalvados os direitos legais do consumidor.</p>
+    </div>
 
-    <hr class="divider" />
   </div>
 </main>
 
 <footer>
   <div class="container">
-    <div class="foot-bot">
-      <div class="copy">© 2026 Anestesia Questões · Todos os direitos reservados</div>
+    <div class="foot-inner">
+      <div class="foot-copy">© 2026 Anestesia Questões · Todos os direitos reservados</div>
       <div class="foot-links">
         <a href="termos.html">Termos de Uso</a>
         <a href="privacidade.html">Política de Privacidade</a>
