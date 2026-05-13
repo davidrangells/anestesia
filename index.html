@@ -382,11 +382,13 @@
   .plan .tier { font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; }
   .plan h3 { font-size: 26px; margin: 8px 0 6px; letter-spacing: -0.02em; }
   .plan .summary { font-size: 14.5px; color: var(--muted); min-height: 44px; }
-  .plan .price-row { display: flex; align-items: baseline; gap: 8px; margin: 22px 0 8px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+  .plan .price-row { margin: 22px 0 4px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+  .plan .price-label { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .plan .price-main { display: flex; align-items: baseline; gap: 4px; }
   .plan .currency { font-size: 18px; color: var(--ink-2); font-weight: 600; }
   .plan .amount { font-size: 52px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); line-height: 1; }
   .plan .per { color: var(--muted); font-size: 14px; }
-  .plan .install { font-size: 13.5px; color: var(--muted); margin-bottom: 22px; }
+  .plan .install { font-size: 13px; color: var(--muted); margin-top: 4px; margin-bottom: 22px; }
   .plan ul { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 11px; }
   .plan li { display: flex; gap: 10px; font-size: 14.5px; color: var(--ink-2); align-items: flex-start; }
   .plan li svg { flex-shrink: 0; color: var(--blue); margin-top: 2px; }
@@ -668,6 +670,21 @@
         <h3 style="font-size: 16px;">Sensação de estudar sem evoluir</h3>
         <p>Sem acompanhar desempenho por tema, fica difícil saber se a revisão está funcionando ou onde concentrar esforço.</p>
       </div>
+      <div class="feat-card reveal" style="background: white;">
+        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+        <h3 style="font-size: 16px;">Dificuldade em saber o que priorizar</h3>
+        <p>Com tantos temas e provas diferentes, é difícil montar uma ordem de revisão que faça sentido para o momento atual.</p>
+      </div>
+      <div class="feat-card reveal" style="background: white;">
+        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
+        <h3 style="font-size: 16px;">Revisão de erros pouco organizada</h3>
+        <p>Resolver questões sem revisar os erros com atenção impede a fixação real dos temas que mais caem nas provas.</p>
+      </div>
+      <div class="feat-card reveal" style="background: white;">
+        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 style="font-size: 16px;">Insegurança antes da prova</h3>
+        <p>Chegar perto da data sem clareza sobre seus pontos fracos gera ansiedade e torna a revisão final menos eficiente.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -936,11 +953,14 @@
         <h3>Foco na Residência e TEA</h3>
         <p class="summary">Para residentes R1, R2 e R3 e candidatos à prova de Título de Especialista em Anestesiologia.</p>
         <div class="price-row">
-          <span class="currency">R$</span>
-          <span class="amount">1.048</span>
-          <span class="per">/ ano</span>
+          <div class="price-label">12× de</div>
+          <div class="price-main">
+            <span class="currency">R$</span>
+            <span class="amount">87,33</span>
+            <span class="per">/ mês</span>
+          </div>
         </div>
-        <div class="install">ou 12× de R$ 87,33 no cartão</div>
+        <div class="install">ou R$ 1.048 à vista</div>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+1.600 questões</strong> focadas em ME1, ME2, ME3 e TEA</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Comentários completos em todas as questões</span></li>
@@ -961,11 +981,14 @@
         <h3>Cobertura completa</h3>
         <p class="summary">Tudo do plano ME/TEA + bateria completa de questões da TSA e da residência inteira.</p>
         <div class="price-row">
-          <span class="currency">R$</span>
-          <span class="amount">1.398</span>
-          <span class="per">/ ano</span>
+          <div class="price-label">12× de</div>
+          <div class="price-main">
+            <span class="currency">R$</span>
+            <span class="amount">116,50</span>
+            <span class="per">/ mês</span>
+          </div>
         </div>
-        <div class="install">ou 12× de R$ 116,50 no cartão</div>
+        <div class="install">ou R$ 1.398 à vista</div>
         <ul>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+2.500 questões</strong> cobrindo TSA, TEA e toda a residência</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Banco completo: ME1, ME2, ME3, TEA e TSA</span></li>
@@ -1060,24 +1083,41 @@
       <h2 style="margin-top: 18px;">O que nossos alunos buscam resolver</h2>
       <p>Médicos residentes e especialistas que querem estudar com mais organização e chegar à prova conhecendo seus pontos fracos.</p>
     </div>
-    <div class="testi">
-      <div class="quote reveal" style="gap: 0;">
+    <div class="testi" style="grid-template-columns: repeat(3,1fr);">
+      <div class="quote reveal" style="gap:0;">
         <div style="width:38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:18px;flex-shrink:0;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <p style="color:var(--ink-2);margin-bottom:0;">"Estudar com mais direção, sem perder tempo resolvendo questões aleatórias sem acompanhar evolução."</p>
+        <p style="color:var(--ink-2);font-weight:600;font-size:15px;margin-bottom:0;">Estudar com mais direção</p>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px;margin-bottom:0;">Sem perder tempo com questões aleatórias e sem medir evolução real.</p>
       </div>
-      <div class="quote reveal" style="gap: 0;">
+      <div class="quote reveal" style="gap:0;">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:18px;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <p style="color:var(--ink-2);font-weight:600;font-size:15px;margin-bottom:0;">Revisar erros de forma organizada</p>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px;margin-bottom:0;">Entender o raciocínio por trás de cada erro para não repeti-lo na prova.</p>
+      </div>
+      <div class="quote reveal" style="gap:0;">
         <div style="width:38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:18px;flex-shrink:0;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>
         </div>
-        <p style="color:var(--ink-2);margin-bottom:0;">"Revisar erros de forma organizada e acompanhar desempenho por tema para saber onde concentrar revisão."</p>
+        <p style="color:var(--ink-2);font-weight:600;font-size:15px;margin-bottom:0;">Acompanhar desempenho por tema</p>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px;margin-bottom:0;">Saber com precisão onde estão os pontos fracos e onde concentrar a revisão.</p>
       </div>
-      <div class="quote reveal" style="gap: 0;">
+      <div class="quote reveal" style="gap:0;">
         <div style="width:38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:18px;flex-shrink:0;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
         </div>
-        <p style="color:var(--ink-2);margin-bottom:0;">"Criar simulados compatíveis com a rotina de plantões e chegar à prova com clareza dos pontos fracos."</p>
+        <p style="color:var(--ink-2);font-weight:600;font-size:15px;margin-bottom:0;">Criar simulados compatíveis com a rotina</p>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px;margin-bottom:0;">Treinar com o tempo disponível entre plantões, sem abrir mão da qualidade.</p>
+      </div>
+      <div class="quote reveal" style="gap:0;">
+        <div style="width:38px;height:38px;border-radius:10px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:18px;flex-shrink:0;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <p style="color:var(--ink-2);font-weight:600;font-size:15px;margin-bottom:0;">Chegar à prova com mais clareza</p>
+        <p style="color:var(--muted);font-size:13.5px;margin-top:6px;margin-bottom:0;">Conhecer os próprios pontos fracos e chegar à prova com uma revisão bem direcionada.</p>
       </div>
     </div>
   </div>
@@ -1090,7 +1130,7 @@
       <div class="inner">
         <div class="urgency">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          Quanto antes você identificar seus pontos fracos, melhor será sua revisão.
+          A prova chega rápido. Sua preparação precisa começar com estratégia.
         </div>
         <h2>Prepare-se para TEA, TSA e Residência com mais estratégia</h2>
         <p>Cada simulado respondido mostra com mais clareza onde você precisa melhorar. Começar antes permite revisar com mais calma, medir evolução e ajustar sua rotina.</p>
