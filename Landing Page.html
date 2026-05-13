@@ -1,0 +1,1068 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Anestesia Questões — Banco de questões para TEA, TSA e Residência</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #0B1B33;
+    --ink-2:      #1B2A44;
+    --muted:      #5A6A85;
+    --line:       #E4E9F2;
+    --line-2:     #EEF2F8;
+    --bg:         #FBFCFE;
+    --card:       #FFFFFF;
+    --blue:       #2A6DF4;
+    --blue-2:     #4F8CFF;
+    --blue-3:     #1E4FBF;
+    --sky:        #E8F0FE;
+    --sky-2:      #F2F6FE;
+    --ok:         #0F8A5F;
+    --r-sm: 8px; --r-md: 14px; --r-lg: 22px; --r-xl: 28px;
+    --shadow-1: 0 1px 0 rgba(11,27,51,0.04), 0 1px 2px rgba(11,27,51,0.04);
+    --shadow-2: 0 8px 24px -10px rgba(15,42,99,0.18), 0 1px 0 rgba(11,27,51,0.04);
+    --shadow-3: 0 24px 60px -28px rgba(15,42,99,0.30), 0 2px 0 rgba(11,27,51,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    color: var(--ink); background: var(--bg);
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    line-height: 1.5; font-size: 16px;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: 0; background: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--blue-3);
+    background: var(--sky); padding: 7px 12px; border-radius: 999px;
+    border: 1px solid #DCE7FB;
+  }
+  .eyebrow .dot { width:6px; height:6px; border-radius:50%; background: var(--blue); box-shadow: 0 0 0 4px rgba(42,109,244,.15); }
+  .serif { font-family: "Instrument Serif", serif; font-weight: 400; font-style: italic; }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.025em; color: var(--ink); line-height: 1.08; margin: 0; }
+  h2 { font-size: clamp(34px, 4vw, 50px); }
+  h3 { font-size: 22px; letter-spacing: -0.015em; }
+  p  { color: var(--muted); margin: 0; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    height: 48px; padding: 0 22px; border-radius: 12px; font-weight: 600;
+    font-size: 15px; transition: transform .15s, box-shadow .2s, background .2s;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: linear-gradient(180deg, var(--blue-2), var(--blue));
+    color: white;
+    box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 10px 24px -10px rgba(42,109,244,0.55);
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255,255,255,0.25) inset, 0 14px 28px -10px rgba(42,109,244,0.6); }
+  .btn-ghost { background: white; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #CDD7E8; }
+  .btn-green { background: #10B981; color: white; box-shadow: 0 10px 24px -10px rgba(16,185,129,0.5); }
+  .btn-green:hover { transform: translateY(-1px); background: #059669; }
+  .btn-lg { height: 56px; padding: 0 28px; font-size: 16px; border-radius: 14px; }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 60;
+    backdrop-filter: saturate(140%) blur(12px);
+    background: rgba(251,252,254,0.82);
+    border-bottom: 1px solid rgba(228,233,242,0.6);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 6px; }
+  .brand img { height: 34px; width: auto; }
+  .brand .name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .brand .name span { color: var(--blue); }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { font-size: 14.5px; color: var(--ink-2); font-weight: 500; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta { display: flex; align-items: center; gap: 10px; }
+  .nav-cta .login { font-size: 14.5px; font-weight: 500; color: var(--ink-2); }
+  .nav-cta .btn { height: 42px; padding: 0 18px; font-size: 14px; }
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--line);
+    background: white; padding: 10px; cursor: pointer;
+  }
+  .hamburger span { display: block; height: 2px; background: var(--ink); border-radius: 2px; transition: all .2s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; flex-direction: column; background: white; border-bottom: 1px solid var(--line); padding: 16px 28px 20px; gap: 4px; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--ink-2); padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+  .mobile-menu a:last-child { border-bottom: 0; }
+  @media (max-width: 880px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 64px 0 90px; overflow: hidden; }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(800px 420px at 18% 0%, rgba(79,140,255,0.18), transparent 70%),
+      radial-gradient(700px 380px at 90% 10%, rgba(180,210,255,0.30), transparent 70%);
+  }
+  .hero-grid {
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center;
+  }
+  .hero h1 { font-size: clamp(40px, 5.4vw, 64px); letter-spacing: -0.035em; margin: 22px 0 22px; }
+  .hero h1 .accent { color: var(--blue); }
+  .hero .lede { font-size: 18px; max-width: 540px; color: #485770; }
+  .hero-ctas { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .hero-tags { display:flex; gap:8px; margin-top:20px; flex-wrap:wrap; }
+  .hero-tag { font-size:12.5px; font-weight:600; color:var(--ink-2); background:white; border:1px solid var(--line); border-radius:999px; padding:6px 14px; }
+  .hero-trust { margin-top: 28px; display: flex; gap: 20px; flex-wrap: wrap; align-items: center; color: #586780; font-size: 13.5px; }
+  .hero-trust .item { display:flex; align-items:center; gap: 7px; }
+  .hero-trust svg { color: var(--blue); }
+  @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* Hero app preview */
+  .preview-wrap { position: relative; perspective: 1800px; }
+  .preview { background: white; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-3); overflow: hidden; transform: rotateX(4deg) rotateY(-6deg); }
+  .preview-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid var(--line-2); background: #F8FAFD; }
+  .preview-bar .dot { width: 11px; height: 11px; border-radius: 50%; background: #DAE2EE; }
+  .preview-bar .url { font-family: "JetBrains Mono", monospace; font-size: 12px; color: #7A8AA6; background: white; border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; margin-left: 8px; }
+  .preview-body { padding: 22px; display: grid; grid-template-columns: 200px 1fr; gap: 22px; }
+  .pv-side { display: flex; flex-direction: column; gap: 6px; }
+  .pv-side .it { font-size: 12.5px; padding: 9px 11px; border-radius: 8px; color: #5A6A85; display:flex; gap:8px; align-items:center; }
+  .pv-side .it .ic { width: 16px; height: 16px; border-radius: 4px; background: #E1E8F4; flex-shrink: 0; }
+  .pv-side .it.active { background: var(--sky); color: var(--blue-3); font-weight: 600; }
+  .pv-side .it.active .ic { background: var(--blue); }
+  .pv-side .label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #93A0BB; padding: 16px 11px 6px; font-weight: 600; }
+  .pv-main { min-width: 0; }
+  .pv-q-tag { font-size: 11px; color: var(--blue-3); background: var(--sky); padding: 4px 9px; border-radius: 999px; font-weight: 600; display: inline-block; margin-bottom: 10px; }
+  .pv-q-title { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 14px; line-height: 1.45; }
+  .pv-opt { display: flex; gap: 10px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 10px; margin-bottom: 7px; font-size: 12.5px; color: #3D4D6A; align-items: flex-start; }
+  .pv-opt .letter { width: 20px; height: 20px; border-radius: 50%; background: #F1F4FB; color: #6A7A95; display: grid; place-items: center; font-size: 11px; font-weight: 600; flex-shrink: 0; }
+  .pv-opt.correct { border-color: #C9E8DA; background: #F1FAF5; }
+  .pv-opt.correct .letter { background: var(--ok); color: white; }
+  .pv-opt.correct .check { margin-left: auto; color: var(--ok); }
+  .pv-foot { display: flex; justify-content: space-between; margin-top: 14px; align-items: center; }
+  .pv-progress { font-size: 11px; color: #6A7A95; font-family: "JetBrains Mono", monospace; }
+  .pv-next { font-size: 11px; color: white; background: var(--blue); padding: 6px 11px; border-radius: 8px; font-weight: 600; }
+  .float-card { position: absolute; background: white; border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow-2); padding: 14px 16px; display: flex; align-items: center; gap: 12px; z-index: 2; }
+  .float-card .ic-wrap { width: 38px; height: 38px; border-radius: 10px; background: var(--sky); display: grid; place-items: center; color: var(--blue); }
+  .float-card .num { font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
+  .float-card .lbl { font-size: 12px; color: var(--muted); }
+  .fc-1 { top: -16px; left: -28px; }
+  .fc-2 { bottom: -22px; right: -18px; }
+  @media (max-width: 980px) { .preview { transform: none; } .fc-1 { left: -8px; } .fc-2 { right: 0; } }
+
+  /* ---------- Section base ---------- */
+  section { padding: 100px 0; }
+  .sec-head { max-width: 760px; margin: 0 auto 56px; text-align: center; }
+  .sec-head p { font-size: 18px; margin-top: 16px; }
+
+  /* ---------- Social proof counters ---------- */
+  .counters-wrap { padding: 0 0 16px; }
+  .counters-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    background: white; border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
+  }
+  .counter-cell { padding: 28px; border-right: 1px solid var(--line-2); text-align: center; }
+  .counter-cell:last-child { border-right: 0; }
+  .counter-num { font-size: 38px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); line-height: 1; }
+  .counter-num .suffix { font-size: 26px; color: var(--blue); }
+  .counter-lbl { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  @media (max-width: 760px) {
+    .counters-row { grid-template-columns: repeat(2, 1fr); }
+    .counter-cell { border-right: 0; border-bottom: 1px solid var(--line-2); }
+    .counter-cell:nth-child(odd) { border-right: 1px solid var(--line-2); }
+    .counter-cell:nth-last-child(-n+2) { border-bottom: 0; }
+  }
+
+  /* ---------- Features ---------- */
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feat-card { background: white; border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; transition: border-color .2s, transform .2s; position: relative; overflow: hidden; }
+  .feat-card:hover { border-color: #C7D5EF; transform: translateY(-2px); }
+  .feat-ic { width: 46px; height: 46px; border-radius: 12px; background: var(--sky); color: var(--blue); display: grid; place-items: center; margin-bottom: 22px; }
+  .feat-card h3 { margin-bottom: 10px; }
+  .feat-card p { font-size: 14.5px; color: #5C6B86; line-height: 1.6; }
+  .feat-card.big { grid-column: span 2; background: linear-gradient(135deg, #0F2557 0%, #1B3F8C 100%); color: white; border: 0; }
+  .feat-card.big h3, .feat-card.big p { color: white; }
+  .feat-card.big p { color: rgba(255,255,255,0.78); }
+  .feat-card.big .feat-ic { background: rgba(255,255,255,0.10); color: #B8D2FF; }
+  .mock-chart { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+  .chart-row { display: flex; align-items: center; gap: 10px; }
+  .chart-label { font-size: 12px; color: rgba(255,255,255,0.7); width: 130px; flex-shrink: 0; }
+  .chart-bar-wrap { flex: 1; display: flex; align-items: center; gap: 8px; }
+  .chart-bar { height: 8px; border-radius: 99px; background: linear-gradient(90deg, #6FA0FF, #4F8CFF); }
+  .chart-bar.chart-bar-low { background: linear-gradient(90deg, #F97316, #FB923C); opacity: 0.85; }
+  .chart-pct { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.9); width: 34px; text-align: right; }
+  @media (max-width: 880px) { .features-grid { grid-template-columns: 1fr; } .feat-card.big { grid-column: span 1; } }
+
+  /* ---------- Screenshots ---------- */
+  .screenshots-wrap { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .screenshots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .screenshot-copy h2 { margin-bottom: 16px; }
+  .screenshot-copy p { font-size: 17px; margin-bottom: 24px; }
+  .screenshot-list { display: flex; flex-direction: column; gap: 16px; }
+  .screenshot-item { display: flex; gap: 14px; align-items: flex-start; }
+  .screenshot-item .si-ic { width: 38px; height: 38px; border-radius: 10px; background: var(--sky); color: var(--blue); display: grid; place-items: center; flex-shrink: 0; }
+  .screenshot-item h4 { font-size: 15px; margin-bottom: 3px; }
+  .screenshot-item p { font-size: 13.5px; color: var(--muted); }
+  .screenshots-frames { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .screen-frame { background: var(--sky-2); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; aspect-ratio: 9/16; display: flex; flex-direction: column; }
+  .screen-frame:first-child { margin-top: 32px; }
+  .screen-frame .sf-bar { background: var(--blue); padding: 10px 14px; font-size: 11px; font-weight: 600; color: white; letter-spacing: 0.04em; }
+  .screen-frame .sf-body { flex: 1; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .sf-q-card { background: white; border-radius: 10px; padding: 12px; border: 1px solid var(--line); font-size: 11.5px; line-height: 1.5; color: var(--ink-2); }
+  .sf-opt { display: flex; gap: 8px; align-items: center; padding: 8px 10px; border: 1px solid var(--line-2); border-radius: 8px; background: white; font-size: 11px; color: var(--ink-2); }
+  .sf-opt.c { border-color: #C9E8DA; background: #F1FAF5; }
+  .sf-opt .l { width: 18px; height: 18px; border-radius: 50%; background: #F1F4FB; display: grid; place-items: center; font-size: 10px; font-weight: 600; flex-shrink: 0; }
+  .sf-stat { display: flex; gap: 8px; }
+  .sf-stat-box { flex: 1; background: white; border: 1px solid var(--line); border-radius: 10px; padding: 10px; text-align: center; }
+  .sf-stat-box .val { font-size: 20px; font-weight: 700; color: var(--blue); letter-spacing: -0.02em; }
+  .sf-stat-box .key { font-size: 10px; color: var(--muted); margin-top: 2px; }
+  .sf-progress-label { font-size: 10px; font-weight: 600; color: var(--ink-2); }
+  .sf-progress-bar { height: 6px; background: var(--line-2); border-radius: 99px; margin-top: 5px; }
+  .sf-progress-bar .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--blue-2), var(--blue)); }
+  @media (max-width: 880px) { .screenshots-grid { grid-template-columns: 1fr; } .screenshots-frames { max-width: 400px; margin: 0 auto; } }
+
+  /* App-style screen mocks */
+  .sf-ios-bar { display:flex; align-items:center; justify-content:space-between; padding:9px 12px 8px; background:white; border-bottom:1px solid var(--line-2); flex-shrink:0; }
+  .sf-ios-back { font-size:10px; color:var(--blue); font-weight:500; }
+  .sf-ios-title { font-size:11px; font-weight:700; color:var(--ink); }
+  .sf-thin-bar { height:3px; background:var(--blue); flex-shrink:0; }
+  .sf-app-body { flex:1; padding:9px; display:flex; flex-direction:column; gap:6px; overflow:hidden; background:#F2F4F8; }
+  .sf-row-counter { display:flex; justify-content:space-between; font-size:8px; color:#6B7280; font-weight:500; }
+  .sf-q-text { background:white; border-radius:8px; padding:9px; border:1px solid var(--line); font-size:9.5px; line-height:1.5; color:var(--ink-2); }
+  .sf-radio-opt { display:flex; gap:7px; align-items:center; padding:6px 9px; border-radius:8px; background:white; border:1.5px solid var(--line-2); font-size:9.5px; color:var(--ink-2); }
+  .sf-radio-opt.sf-selected { border-color:#22c55e; background:#F0FFF4; color:#166534; font-weight:600; }
+  .sf-radio-circle { width:13px; height:13px; border-radius:50%; border:2px solid #D1D5DB; flex-shrink:0; display:grid; place-items:center; }
+  .sf-radio-circle.on { border-color:#22c55e; background:#22c55e; }
+  .sf-radio-circle.on::after { content:""; width:4px; height:4px; border-radius:50%; background:white; }
+  .sf-answer-banner { display:flex; align-items:center; gap:7px; background:#F0FFF4; border-radius:8px; padding:6px 9px; border:1px solid #86efac; }
+  .sf-answer-ic { width:15px; height:15px; border-radius:50%; background:#22c55e; display:grid; place-items:center; flex-shrink:0; }
+  .sf-comment-box { background:white; border-radius:8px; padding:8px 9px; border:1px solid var(--line); flex:1; min-height:0; overflow:hidden; }
+  .sf-section-tag { font-size:7.5px; font-weight:700; color:#9CA3AF; letter-spacing:0.07em; }
+  .sf-app-nav { display:flex; gap:5px; margin-top:auto; flex-shrink:0; }
+  .sf-app-nav button { flex:1; border-radius:8px; font-size:9px; font-weight:600; padding:6px 4px; font-family:inherit; cursor:default; border:0; }
+  .sf-btn-ghost { background:white; color:var(--ink-2); border:1.5px solid var(--line) !important; }
+  .sf-btn-blue { background:var(--blue); color:white; }
+  .sf-result-body { flex:1; padding:9px; display:flex; flex-direction:column; gap:6px; overflow:hidden; background:#F2F4F8; }
+  .sf-result-card { background:white; border-radius:10px; padding:10px; border:1px solid var(--line); }
+  .sf-score-ring { position:relative; flex-shrink:0; width:52px; height:52px; }
+  .sf-score-inner { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .sf-2x2 { display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+  .sf-mini { border:1px solid var(--line); border-radius:8px; padding:7px 8px; background:white; }
+  .sf-mini .mk { font-size:7.5px; font-weight:700; color:#9CA3AF; letter-spacing:0.05em; }
+  .sf-mini .mv { font-size:15px; font-weight:800; letter-spacing:-0.02em; line-height:1.2; }
+  .sf-mini .md { font-size:7px; color:#9CA3AF; }
+  /* Dark theme – screen 1 */
+  .screen-frame.sf-dark { background:#0D1526; border-color:#1E2D42; }
+  .sf-dark .sf-ios-bar { background:#0D1526; border-bottom-color:rgba(255,255,255,0.07); }
+  .sf-dark .sf-ios-back { color:#94A3B8; }
+  .sf-dark .sf-ios-title { color:white; font-size:9.5px; }
+  .sf-dark .sf-app-body { background:#0D1526; }
+  .sf-dark .sf-row-counter { color:#64748B; }
+  .sf-dark .sf-q-text { background:#162032; border-color:rgba(255,255,255,0.07); color:#E2E8F0; }
+  .sf-dark .sf-radio-opt { background:#162032; border-color:rgba(255,255,255,0.07); color:#CBD5E1; }
+  .sf-dark .sf-radio-opt.sf-selected { border-color:#22c55e; background:rgba(34,197,94,0.08); color:white; font-weight:600; }
+  .sf-dark .sf-radio-circle { border-color:#374151; }
+  .sf-dark .sf-radio-circle.on { border-color:#2A6DF4; background:#2A6DF4; }
+  .sf-dark .sf-answer-banner { background:rgba(34,197,94,0.08); border-color:rgba(34,197,94,0.25); }
+  .sf-dark .sf-comment-box { background:#162032; border-color:rgba(255,255,255,0.07); }
+  .sf-dark .sf-section-tag { color:#4B5563; }
+  .sf-dark .sf-btn-ghost { background:#162032; color:#94A3B8; border-color:rgba(255,255,255,0.1) !important; }
+
+  /* ---------- How it works ---------- */
+  .how { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .how .sec-head { margin-bottom: 40px; }
+  .steps { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
+  .step { display: flex; align-items: center; gap: 20px; padding: 20px 24px; border-radius: var(--r-lg); border: 1px solid var(--line); background: #FAFCFF; transition: border-color .2s, transform .2s; }
+  .step:hover { border-color: #C7D5EF; transform: translateX(4px); }
+  .step .num { width: 40px; height: 40px; border-radius: 50%; background: var(--sky); border: 1px solid #DCE7FB; color: var(--blue); font-size: 15px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step h3 { color: var(--ink); font-size: 16px; margin: 0; }
+  .step-text { flex: 1; }
+
+  /* ---------- Plans ---------- */
+  .plans-wrap { background: linear-gradient(180deg, var(--sky-2), white 70%); }
+  .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; max-width: 980px; margin: 0 auto; }
+  .plan { background: white; border: 1px solid var(--line); border-radius: var(--r-xl); padding: 36px 34px; position: relative; display: flex; flex-direction: column; }
+  .plan.featured { border: 2px solid var(--blue); box-shadow: 0 24px 60px -28px rgba(42,109,244,0.45); }
+  .plan .badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--ink); color: white; padding: 6px 14px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: 0.03em; white-space: nowrap; }
+  .plan .tier { font-size: 13px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; }
+  .plan h3 { font-size: 26px; margin: 8px 0 6px; letter-spacing: -0.02em; }
+  .plan .summary { font-size: 14.5px; color: var(--muted); min-height: 44px; }
+  .plan .price-row { display: flex; align-items: baseline; gap: 8px; margin: 22px 0 8px; padding-top: 22px; border-top: 1px solid var(--line-2); }
+  .plan .currency { font-size: 18px; color: var(--ink-2); font-weight: 600; }
+  .plan .amount { font-size: 52px; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); line-height: 1; }
+  .plan .per { color: var(--muted); font-size: 14px; }
+  .plan .install { font-size: 13.5px; color: var(--muted); margin-bottom: 22px; }
+  .plan ul { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 11px; }
+  .plan li { display: flex; gap: 10px; font-size: 14.5px; color: var(--ink-2); align-items: flex-start; }
+  .plan li svg { flex-shrink: 0; color: var(--blue); margin-top: 2px; }
+  .plan .btn { width: 100%; margin-top: auto; }
+  .plan .guarantee-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+  @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+  /* ---------- FAQ ---------- */
+  .faq-section { background: var(--sky-2); border-top: 1px solid var(--line); }
+  .faq { max-width: 820px; margin: 0 auto; }
+  .faq-item { border: 1px solid var(--line); background: white; border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+  .faq-q { width: 100%; text-align: left; padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: 16px; font-weight: 600; color: var(--ink); font-family: inherit; }
+  .faq-q .chevron { width: 28px; height: 28px; border-radius: 50%; background: var(--sky); color: var(--blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .25s ease, background .2s ease; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .25s ease; padding: 0 24px; color: var(--ink-2); font-size: 15px; line-height: 1.65; }
+  .faq-item.open .faq-a { max-height: 320px; padding-bottom: 22px; }
+  .faq-item.open .faq-q .chevron { background: var(--blue); color: white; transform: rotate(180deg); }
+
+  /* ---------- Testimonials ---------- */
+  .testi-wrap { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .testi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .quote { background: var(--sky-2); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; display: flex; flex-direction: column; }
+  .quote .stars { color: #FFB020; font-size: 14px; letter-spacing: 2px; margin-bottom: 14px; }
+  .quote p { color: var(--ink-2); font-size: 15px; line-height: 1.6; margin-bottom: 22px; flex: 1; }
+  .quote .who { display: flex; align-items: center; gap: 12px; }
+  .quote .avatar { width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; object-fit: cover; border: 2px solid white; box-shadow: var(--shadow-2); }
+  .quote .name { font-weight: 600; font-size: 14px; color: var(--ink); }
+  .quote .role { font-size: 12.5px; color: var(--muted); }
+  @media (max-width: 880px) { .testi { grid-template-columns: 1fr; } }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta-wrap { padding: 60px 0 100px; }
+  .final-cta { background: linear-gradient(135deg, var(--blue-3) 0%, var(--blue-2) 100%); border-radius: 28px; padding: 70px; color: white; position: relative; overflow: hidden; }
+  .final-cta::before { content: ""; position: absolute; right: -120px; top: -120px; width: 380px; height: 380px; background: radial-gradient(circle, rgba(255,255,255,0.15), transparent 60%); pointer-events: none; }
+  .final-cta::after { content: ""; position: absolute; left: -100px; bottom: -100px; width: 320px; height: 320px; background: radial-gradient(circle, rgba(255,255,255,0.10), transparent 60%); pointer-events: none; }
+  .final-cta .inner { position: relative; z-index: 1; text-align: center; max-width: 780px; margin: 0 auto; }
+  .final-cta h2 { color: white; font-size: clamp(32px, 4vw, 50px); }
+  .final-cta .urgency { display: inline-flex; align-items: center; gap: 8px; background: rgba(16,185,129,0.2); border: 1px solid rgba(16,185,129,0.4); color: #6EE7B7; padding: 7px 14px; border-radius: 999px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+  .final-cta p { color: rgba(255,255,255,0.75); font-size: 17px; margin: 18px auto 32px; max-width: 600px; }
+  .final-cta .row-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .final-cta .btn-ghost { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.2); }
+  .final-cta .btn-ghost:hover { background: rgba(255,255,255,0.14); }
+  .final-cta .micro { color: rgba(255,255,255,0.55); font-size: 13px; margin-top: 22px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .final-cta .micro span { display: flex; align-items: center; gap: 6px; }
+  @media (max-width: 760px) { .final-cta { padding: 40px 28px; } }
+
+  /* ---------- App badges (inline in screenshots section) ---------- */
+  .screenshots-app-row { display: flex; align-items: center; gap: 16px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .screenshots-app-text { margin-right: 4px; }
+  .screenshots-app-label { font-size: 14px; font-weight: 700; color: var(--ink); display: block; }
+  .screenshots-app-sub { font-size: 12.5px; color: var(--muted); margin-top: 2px; }
+  .app-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--ink); color: white; border-radius: 12px; padding: 10px 16px; text-decoration: none; transition: transform .15s, background .15s; }
+  .app-badge:hover { transform: translateY(-1px); background: var(--ink-2); }
+  .app-badge.soon { background: #9BA8BE; cursor: default; }
+  .app-badge.soon:hover { transform: none; }
+  .app-badge .ab-sub { font-size: 10px; opacity: 0.75; letter-spacing: 0.03em; }
+  .app-badge .ab-name { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+
+  /* ---------- Footer ---------- */
+  footer { background: white; border-top: 1px solid var(--line); padding: 60px 0 40px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+  .foot-brand p { font-size: 14px; max-width: 320px; margin-top: 16px; line-height: 1.6; }
+  .foot-col h4 { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 18px; }
+  .foot-col a { display: block; font-size: 14.5px; color: var(--ink-2); padding: 6px 0; }
+  .foot-col a:hover { color: var(--blue); }
+  .foot-bot { border-top: 1px solid var(--line-2); padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot-bot .copy { font-size: 13px; color: var(--muted); }
+  .socials { display: flex; gap: 10px; }
+  .socials a { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink-2); transition: all .15s; }
+  .socials a:hover { background: var(--blue); color: white; border-color: var(--blue); }
+  @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* WhatsApp float */
+  .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: white; display: grid; place-items: center; box-shadow: 0 12px 28px -8px rgba(37,211,102,0.55); transition: transform .2s; }
+  .wa-float:hover { transform: scale(1.06); }
+</style>
+</head>
+<body>
+
+<!-- ============= NAV ============= -->
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">
+      <img src="img/Logo.png" alt="Anestesia Questões" />
+      <div class="name">Anestesia<span> Questões</span></div>
+    </a>
+    <nav class="nav-links">
+      <a href="#produto">A plataforma</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">Dúvidas</a>
+      <a href="#depoimentos">Depoimentos</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="login" href="https://anestesia-questoes-aluno.vercel.app" target="_blank" rel="noopener noreferrer">Entrar</a>
+      <a class="btn btn-primary" href="#planos">Começar agora</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#produto" onclick="closeMobileMenu()">A plataforma</a>
+    <a href="#planos" onclick="closeMobileMenu()">Planos</a>
+    <a href="#faq" onclick="closeMobileMenu()">Dúvidas</a>
+    <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
+    <a href="https://anestesia-questoes-aluno.vercel.app" target="_blank" rel="noopener noreferrer">Entrar na plataforma</a>
+  </div>
+</header>
+
+<!-- ============= HERO ============= -->
+<section class="hero" id="top" style="padding-top: 56px;">
+  <div class="hero-bg"></div>
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span>Plataforma premium de questões para anestesiologia</span>
+      <h1>
+        A preparação mais estratégica para <span class="accent">TEA, TSA</span> e Residência
+      </h1>
+      <p class="lede">
+        Banco completo de questões, simulados personalizados e métricas de desempenho para médicos e residentes que querem estudar com direção e performar no nível da prova.
+      </p>
+      <div class="hero-tags">
+        <span class="hero-tag">Residentes R1, R2 e R3</span>
+        <span class="hero-tag">Especialização em Anestesiologia</span>
+        <span class="hero-tag">Candidatos a TEA e TSA</span>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer">
+          Assinar e Começar Agora
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn-ghost btn-lg" href="#como">Ver Como Funciona</a>
+      </div>
+      <div class="hero-trust">
+        <div class="item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+          +4.100 questões combinadas nos módulos
+        </div>
+        <div class="item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+          12 meses de acesso
+        </div>
+        <div class="item">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+          7 dias de garantia
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-wrap">
+      <div class="float-card fc-1">
+        <div class="ic-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>
+        </div>
+        <div>
+          <div class="num">+78%</div>
+          <div class="lbl">Acerto médio após 30 dias</div>
+        </div>
+      </div>
+
+      <div class="preview" aria-hidden="true">
+        <div class="preview-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">anestesiaquestoes.com.br/simulado</span>
+        </div>
+        <div class="preview-body">
+          <aside class="pv-side">
+            <div class="label">Estudar</div>
+            <div class="it active"><span class="ic"></span>Simulado TSA</div>
+            <div class="it"><span class="ic"></span>Banco completo</div>
+            <div class="it"><span class="ic"></span>Por tema</div>
+            <div class="label">Você</div>
+            <div class="it"><span class="ic"></span>Desempenho</div>
+            <div class="it"><span class="ic"></span>Histórico</div>
+          </aside>
+          <div class="pv-main">
+            <span class="pv-q-tag">Questão 12 · Anestésicos locais</span>
+            <div class="pv-q-title">
+              Paciente de 68 kg recebe bloqueio de plexo braquial com 30 mL de bupivacaína 0,5%. Qual é a dose total administrada, em mg/kg?
+            </div>
+            <div class="pv-opt"><span class="letter">A</span><span>1,8 mg/kg</span></div>
+            <div class="pv-opt correct">
+              <span class="letter">B</span>
+              <span>2,2 mg/kg</span>
+              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <div class="pv-opt"><span class="letter">C</span><span>3,0 mg/kg</span></div>
+            <div class="pv-opt"><span class="letter">D</span><span>4,4 mg/kg</span></div>
+            <div class="pv-foot">
+              <span class="pv-progress">12 / 40</span>
+              <span class="pv-next">Ver comentário →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-card fc-2">
+        <div class="ic-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        </div>
+        <div>
+          <div class="num">2.500+</div>
+          <div class="lbl">Questões comentadas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SOCIAL PROOF COUNTERS ============= -->
+<section class="counters-wrap" style="padding-top: 0; padding-bottom: 40px;">
+  <div class="container">
+    <div class="counters-row">
+      <div class="counter-cell">
+        <div class="counter-num"><span class="count-up" data-target="2500" data-prefix="+">0</span><span class="suffix">+</span></div>
+        <div class="counter-lbl">Questões comentadas</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-num"><span class="count-up" data-target="900" data-prefix="+">0</span></div>
+        <div class="counter-lbl">Médicos assinantes</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-num"><span class="count-up" data-target="92">0</span><span class="suffix">%</span></div>
+        <div class="counter-lbl">Aprovação dos assinantes</div>
+      </div>
+      <div class="counter-cell">
+        <div class="counter-num"><span class="count-up" data-target="7">0</span></div>
+        <div class="counter-lbl">Dias de garantia incondicional</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FEATURES ============= -->
+<section id="produto">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>A plataforma</span>
+      <h2 style="margin-top: 18px;">Tudo que você precisa para chegar preparado na prova.</h2>
+      <p>Uma ferramenta enxuta, sem distrações, construída por quem entende o cronograma apertado de quem está na residência.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-card big reveal">
+        <div class="feat-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>
+        </div>
+        <h3>Dashboard de desempenho real</h3>
+        <p style="max-width: 460px;">Veja sua taxa de acerto por tema, por prova e por nível de dificuldade. Descubra rapidamente onde você está perdendo pontos e foque o estudo no que importa.</p>
+        <div class="mock-chart" aria-hidden="true">
+          <div class="chart-row">
+            <span class="chart-label">Anestésicos locais</span>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="width:88%"></div><span class="chart-pct">88%</span></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">Farmacologia</span>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="width:72%"></div><span class="chart-pct">72%</span></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">Anestesia regional</span>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="width:65%"></div><span class="chart-pct">65%</span></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">Reanimação</span>
+            <div class="chart-bar-wrap"><div class="chart-bar chart-bar-low" style="width:48%"></div><span class="chart-pct">48%</span></div>
+          </div>
+          <div class="chart-row">
+            <span class="chart-label">Anestesia geral</span>
+            <div class="chart-bar-wrap"><div class="chart-bar chart-bar-low" style="width:41%"></div><span class="chart-pct">41%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Simulados personalizados</h3>
+        <p>Monte simulados por prova, tema, ano ou dificuldade. Cronometre como no dia real e treine o tempo de raciocínio.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+        </div>
+        <h3>Comentários explicativos</h3>
+        <p>Cada questão acompanha resposta comentada com fundamentação clínica e referências para você estudar a fundo.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+        </div>
+        <h3>App nativo para iOS e Android</h3>
+        <p>Estude no computador no plantão e continue pelo app no celular. Simulados, histórico e desempenho sempre com você.</p>
+      </div>
+
+      <div class="feat-card reveal">
+        <div class="feat-ic">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 4v16"/></svg>
+        </div>
+        <h3>Organização por prova e tema</h3>
+        <p>Filtre rapidamente por TEA, TSA, residência ou por assunto — de farmacologia a anestesia regional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= SCREENSHOTS ============= -->
+<section class="screenshots-wrap" id="plataforma">
+  <div class="container">
+    <div class="screenshots-grid">
+      <div class="screenshot-copy reveal">
+        <span class="eyebrow"><span class="dot"></span>A plataforma na prática</span>
+        <h2 style="margin-top: 18px;">Simples de usar,<br><span style="color: var(--blue);">poderoso para estudar.</span></h2>
+        <p>Interface limpa pensada para quem tem pouco tempo. Resolva questões, veja seus resultados e volte para o que importa.</p>
+        <div class="screenshot-list" style="margin-top: 24px;">
+          <div class="screenshot-item">
+            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="11" y2="18"/></svg></div>
+            <div><h4>Filtros por prova, ano e tema</h4><p>Selecione por TEA, TSA, ME e residência. Filtre por assunto e treine exatamente o que precisa.</p></div>
+          </div>
+          <div class="screenshot-item">
+            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
+            <div><h4>Painel de desempenho</h4><p>Veja sua taxa de acerto por tema e descubra onde focar.</p></div>
+          </div>
+          <div class="screenshot-item">
+            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
+            <div><h4>Comentários clínicos</h4><p>Cada questão com gabarito comentado e fundamentação.</p></div>
+          </div>
+          <div class="screenshot-item">
+            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+            <div><h4>App nativo para iPhone e Android</h4><p>Estude no celular com a mesma experiência da web — simulados, histórico e desempenho sempre no seu bolso.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="screenshots-frames reveal">
+
+        <!-- Screen 1: Simulado – questão com resposta -->
+        <div class="screen-frame">
+          <div class="sf-ios-bar">
+            <span class="sf-ios-back">‹ Voltar</span>
+            <span class="sf-ios-title">Simulado • ME • R2, R1</span>
+            <span></span>
+          </div>
+          <div class="sf-thin-bar" style="width:35%"></div>
+          <div class="sf-app-body">
+            <div class="sf-row-counter">
+              <span>Questão 7 / 20</span><span>7/20 respondidas</span>
+            </div>
+            <div class="sf-q-text">(ME1-2019) A adição do EDTA em algumas soluções de propofol visa o(a):</div>
+            <div class="sf-radio-opt"><span class="sf-radio-circle"></span>A) Ajuste da tonicidade da formulação com o plasma</div>
+            <div class="sf-radio-opt sf-selected"><span class="sf-radio-circle on"></span>B) Inibição do crescimento bacteriano na formulação</div>
+            <div class="sf-radio-opt"><span class="sf-radio-circle"></span>C) Diluição do hipnótico no meio lipídico</div>
+            <div class="sf-radio-opt"><span class="sf-radio-circle"></span>D) Emulsificação do componente lipídico em meio aquoso</div>
+            <div class="sf-answer-banner">
+              <div class="sf-answer-ic">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <div>
+                <div style="color:#166534;font-weight:700;font-size:9px;">Resposta correta!</div>
+                <div style="color:#4b7a5e;font-size:8px;">Gabarito: B</div>
+              </div>
+            </div>
+            <div class="sf-comment-box">
+              <div class="sf-section-tag">COMENTÁRIO</div>
+              <div style="font-size:8px;color:#1F2937;font-weight:700;line-height:1.4;margin-top:4px;">Alternativa Correta: Inibição do crescimento bacteriano na formulação</div>
+              <div style="font-size:7.5px;color:#374151;line-height:1.5;margin-top:5px;">O propofol (2,6-diisopropilfenol) é altamente lipossolúvel. Sua formulação em emulsão lipídica (óleo de soja, glicerol, lecitina de ovo) é excelente meio de cultura para microrganismos. O EDTA atua como bacteriostático, sequestrando íons metálicos necessários ao metabolismo bacteriano...</div>
+            </div>
+            <div class="sf-app-nav">
+              <button class="sf-btn-ghost">← Anterior</button>
+              <button class="sf-btn-blue">Próxima →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 2: Resultado -->
+        <div class="screen-frame">
+          <div class="sf-ios-bar">
+            <span class="sf-ios-back">‹ Voltar</span>
+            <span class="sf-ios-title">Resultado</span>
+            <span></span>
+          </div>
+          <div class="sf-result-body">
+            <div>
+              <div style="font-size:7.5px;font-weight:700;color:#9CA3AF;letter-spacing:0.07em;">RESULTADO FINAL</div>
+              <div style="font-size:14px;font-weight:800;color:var(--ink);letter-spacing:-0.02em;">Simulado 03</div>
+            </div>
+            <div class="sf-result-card">
+              <div style="display:flex;align-items:center;gap:10px;">
+                <div class="sf-score-ring">
+                  <svg width="52" height="52" viewBox="0 0 52 52">
+                    <circle cx="26" cy="26" r="20" fill="none" stroke="#DCFCE7" stroke-width="5"/>
+                    <circle cx="26" cy="26" r="20" fill="none" stroke="#22c55e" stroke-width="5" stroke-dasharray="92.9 125.6" stroke-linecap="round" transform="rotate(-90 26 26)"/>
+                  </svg>
+                  <div class="sf-score-inner">
+                    <span style="font-size:12px;font-weight:800;color:#16a34a;line-height:1;">74%</span>
+                    <span style="font-size:7px;color:#9CA3AF;">acerto</span>
+                  </div>
+                </div>
+                <div>
+                  <div style="color:#16a34a;font-weight:700;font-size:9.5px;">Muito bem!</div>
+                  <div style="color:#9CA3AF;font-size:8px;margin-top:2px;line-height:1.35;">Continue assim e<br>chegue preparado.</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:5px;margin-top:9px;">
+                <button style="flex:1;background:var(--blue);color:white;border:0;border-radius:7px;font-size:8.5px;font-weight:600;padding:6px 4px;font-family:inherit;">Revisar questões</button>
+                <button style="flex:1;background:white;color:var(--blue);border:1px solid var(--line);border-radius:7px;font-size:8.5px;font-weight:600;padding:6px 4px;font-family:inherit;">+ Novo simulado</button>
+              </div>
+            </div>
+            <div class="sf-2x2">
+              <div class="sf-mini"><div class="mk">NOTA</div><div class="mv" style="color:var(--blue);">74%</div><div class="md">aproveitamento</div></div>
+              <div class="sf-mini" style="background:#F0FFF4;"><div class="mk">ACERTOS</div><div class="mv" style="color:#16a34a;">8</div><div class="md">de 10 questões</div></div>
+              <div class="sf-mini" style="background:#FFF5F5;"><div class="mk">ERROS</div><div class="mv" style="color:#ef4444;">2</div><div class="md">de 10 questões</div></div>
+              <div class="sf-mini"><div class="mk">QUESTÕES</div><div class="mv" style="color:var(--ink);">10<span style="font-size:9px;font-weight:400;color:#9CA3AF;">/10</span></div><div class="md">respondidas</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="screenshots-app-row reveal">
+      <div class="screenshots-app-text">
+        <span class="screenshots-app-label">Baixe o app gratuito</span>
+        <p class="screenshots-app-sub">Disponível para iPhone agora · Android em breve</p>
+      </div>
+      <a class="app-badge" href="https://apps.apple.com/br/app/anestesia-quest%C3%B5es/id6762927242" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div><div class="ab-sub">Baixar na</div><div class="ab-name">App Store</div></div>
+      </a>
+      <div class="app-badge soon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.96.07l.1-.06 11.4-6.58-2.48-2.49-9.98 9.06zM.48 1.75C.18 2.07 0 2.57 0 3.22v17.54c0 .65.18 1.15.49 1.47l.08.07 9.82-9.82v-.23L.56 1.68l-.08.07zM20.13 8.49l-2.79-1.61-2.77 2.77 2.77 2.77 2.82-1.63c.8-.46.8-1.22-.03-1.3zM4.14.25l-.1-.06C3.73.07 3.38.09 3.08.26L13.14 10.3l-2.5-2.5L4.14.25z"/></svg>
+        <div><div class="ab-sub">Em breve no</div><div class="ab-name">Google Play</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= HOW IT WORKS ============= -->
+<section class="how" id="como">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Como funciona</span>
+      <h2 style="margin-top: 18px;">Quatro passos para um estudo inteligente</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="num">1</div>
+        <div class="step-text"><h3>Entre na plataforma com seu login.</h3></div>
+      </div>
+      <div class="step reveal">
+        <div class="num">2</div>
+        <div class="step-text"><h3>Selecione TEA, TSA ou Residência e aplique os filtros que fazem sentido para seu momento.</h3></div>
+      </div>
+      <div class="step reveal">
+        <div class="num">3</div>
+        <div class="step-text"><h3>Resolva questões e simulados com estratégia de prova.</h3></div>
+      </div>
+      <div class="step reveal">
+        <div class="num">4</div>
+        <div class="step-text"><h3>Acompanhe sua evolução no dashboard e ajuste o plano de revisão.</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= PLANS ============= -->
+<section class="plans-wrap" id="planos">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Planos</span>
+      <h2 style="margin-top: 18px;">Escolha o caminho da sua prova.</h2>
+      <p>12 meses de acesso, pagamento seguro via Eduzz, com garantia incondicional de 7 dias.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="tier">ME / TEA</div>
+        <h3>Foco na Residência e TEA</h3>
+        <p class="summary">Para residentes R1, R2 e R3 e candidatos à prova de Título de Especialista em Anestesiologia.</p>
+        <div class="price-row">
+          <span class="currency">R$</span>
+          <span class="amount">1.048</span>
+          <span class="per">/ ano</span>
+        </div>
+        <div class="install">ou 12× de R$ 87,33 no cartão</div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+1.600 questões</strong> focadas em ME1, ME2, ME3 e TEA</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Comentários completos em todas as questões</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Simulados personalizados por tema e prova</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Dashboard de desempenho completo</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Acesso por 12 meses · Computador e celular</span></li>
+        </ul>
+        <a class="btn btn-ghost btn-lg" href="https://chk.eduzz.com/1717249" target="_blank" rel="noopener noreferrer">Assinar ME / TEA</a>
+        <div class="guarantee-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Garantia de 7 dias · Pagamento seguro via Eduzz
+        </div>
+      </div>
+
+      <div class="plan featured reveal">
+        <div class="badge">Mais escolhido</div>
+        <div class="tier">TSA</div>
+        <h3>Cobertura completa</h3>
+        <p class="summary">Tudo do plano ME/TEA + bateria completa de questões da TSA e da residência inteira.</p>
+        <div class="price-row">
+          <span class="currency">R$</span>
+          <span class="amount">1.398</span>
+          <span class="per">/ ano</span>
+        </div>
+        <div class="install">ou 12× de R$ 116,50 no cartão</div>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+2.500 questões</strong> cobrindo TSA, TEA e toda a residência</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Banco completo: ME1, ME2, ME3, TEA e TSA</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Comentários, simulados e dashboard ilimitados</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Suporte prioritário por WhatsApp</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Acesso por 12 meses · Computador e celular</span></li>
+        </ul>
+        <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer">Assinar TSA</a>
+        <div class="guarantee-note">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Garantia de 7 dias · Pagamento seguro via Eduzz
+        </div>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 28px; font-size: 14px;">
+      Em dúvida sobre qual plano escolher?
+      <a href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 600;">Fale com a gente no WhatsApp →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============= FAQ ============= -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Dúvidas frequentes</span>
+      <h2 style="margin-top: 18px;">Antes de assinar, o que mais perguntam.</h2>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item open reveal">
+        <button class="faq-q">Quanto tempo dura o acesso? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">São 12 meses corridos a partir da data da assinatura. Você pode entrar e estudar quantas vezes quiser, sem limite diário de questões.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">A garantia de 7 dias funciona mesmo? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Sim. Se nos primeiros 7 dias você sentir que a plataforma não é para você, basta nos pedir o reembolso pelo WhatsApp. Devolvemos 100% do valor, sem perguntas e sem burocracia.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Qual a diferença entre o plano ME/TEA e o TSA? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">O plano ME/TEA inclui +1.600 questões focadas em ME1, ME2, ME3 e TEA — ideal para residentes e quem vai prestar TEA. O plano TSA inclui +2.500 questões e cobre, além de tudo isso, o conteúdo específico da TSA. Se você ainda vai prestar TSA, vale o plano completo.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Consigo estudar pelo celular? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Sim. A plataforma é totalmente responsiva — funciona no navegador do celular, tablet e computador. Você pode começar um simulado no computador e continuar pelo celular.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">As questões são de provas anteriores ou autorais? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Nosso banco combina questões originais de provas anteriores de TEA, TSA e residência com questões inéditas e comentadas, cobrindo todos os temas relevantes da especialidade.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Como funciona o pagamento? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">O pagamento é processado pela Eduzz, uma das maiores plataformas de produtos digitais do Brasil. Você pode pagar à vista no Pix ou parcelar em até 12× no cartão de crédito.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Posso falar com alguém antes de assinar? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Claro. Manda mensagem no nosso WhatsApp — respondemos rápido e tiramos qualquer dúvida sobre conteúdo, plano ou pagamento antes da sua decisão.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= TESTIMONIALS ============= -->
+<section class="testi-wrap" id="depoimentos">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>Quem está usando</span>
+      <h2 style="margin-top: 18px;">Aprovado por quem está no plantão.</h2>
+      <p>Residentes e especialistas que usam a plataforma diariamente para se preparar com objetividade.</p>
+    </div>
+
+    <div class="testi">
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Resolvi quase 2.000 questões nos últimos meses e a evolução foi absurda. O painel me ajudou a identificar que minha fraqueza era farmacologia e direcionei o estudo. Passei na TEA."</p>
+        <div class="who">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Mariana Rios" />
+          <div>
+            <div class="name">Mariana Rios</div>
+            <div class="role">Aprovada TEA 2025</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"A plataforma é muito mais rápida e organizada do que as que usei antes. Os comentários são curtos, diretos e com referência. Perfeito para quem está no R2 e tem pouco tempo."</p>
+        <div class="who">
+          <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Felipe Tavares" />
+          <div>
+            <div class="name">Felipe Tavares</div>
+            <div class="role">Residente R2 · Anestesiologia</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Estudei pela Anestesia Questões nos 4 meses antes da TSA. Fazia simulado todo dia no caminho do trabalho, pelo celular. A sensação na prova era de já ter visto tudo."</p>
+        <div class="who">
+          <img class="avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Camila Peixoto" />
+          <div>
+            <div class="name">Camila Peixoto</div>
+            <div class="role">Aprovada TSA 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FINAL CTA ============= -->
+<section class="final-cta-wrap">
+  <div class="container">
+    <div class="final-cta reveal">
+      <div class="inner">
+        <div class="urgency">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          A próxima TEA é em outubro — faltam 5 meses
+        </div>
+        <h2>Seu próximo resultado começa com estratégia de estudo</h2>
+        <p>Se você quer chegar em TEA, TSA ou Residência com mais confiança e consistência, o melhor momento para estruturar sua preparação é agora.</p>
+        <div class="row-ctas">
+          <a class="btn btn-green btn-lg" href="#planos">Quero Assinar Agora</a>
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+            Tirar Dúvidas no WhatsApp
+          </a>
+        </div>
+        <div class="micro">
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Garantia de 7 dias</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>12 meses de acesso</span>
+          <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>Pagamento seguro · Eduzz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <img src="img/Logo.png" alt="Anestesia Questões" />
+          <div class="name">Anestesia<span style="color: var(--blue);"> Questões</span></div>
+        </div>
+        <p>Banco de questões e simulados feitos por e para anestesiologistas. Preparação séria para TEA, TSA e Residência.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Plataforma</h4>
+        <a href="#produto">A plataforma</a>
+        <a href="#planos">Planos</a>
+        <a href="#faq">Dúvidas</a>
+        <a href="#depoimentos">Depoimentos</a>
+      </div>
+      <div class="foot-col">
+        <h4>Acesso</h4>
+        <a href="https://anestesia-questoes-aluno.vercel.app" target="_blank" rel="noopener noreferrer">Entrar na plataforma</a>
+        <a href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+        <a href="#planos">Assinar agora</a>
+      </div>
+      <div class="foot-col">
+        <h4>Legal</h4>
+        <a href="#termos">Termos de Uso</a>
+        <a href="#privacidade">Política de Privacidade</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="copy">© 2026 Anestesia Questões · Todos os direitos reservados</div>
+      <div class="socials">
+        <a href="#instagram" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#telegram" aria-label="Telegram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m21.7 3.3-19 7.2c-.9.3-.9 1.6.1 1.9l4.8 1.5 1.9 6c.2.7 1.1.9 1.6.3l2.7-2.8 5 3.7c.6.5 1.5.1 1.7-.7l3.1-15.7c.2-.9-.7-1.7-1.5-1.4zM10 14.6l-.4 4.4-2-5.9 11.4-7.1L10 14.6z"/></svg>
+        </a>
+        <a href="#facebook" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp float -->
+<a class="wa-float" href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobileMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Scroll reveal
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Counter animation
+  const animateCounter = (el, target) => {
+    const duration = 1800;
+    const start = performance.now();
+    const prefix = el.dataset.prefix || '';
+    const step = now => {
+      const progress = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + Math.floor(ease * target).toLocaleString('pt-BR');
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const counterObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      animateCounter(el, Number(el.dataset.target));
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.count-up').forEach(el => counterObserver.observe(el));
+</script>
+</body>
+</html>
