@@ -66,6 +66,20 @@
   .foot-links { display: flex; gap: 20px; }
   .foot-links a { font-size: 13px; color: var(--muted); }
   .foot-links a:hover { color: var(--blue); }
+
+  /* Mobile */
+  html, body { overflow-x: hidden; }
+  @media (max-width: 640px) {
+    .nav-actions { display: none; }
+    .nav-inner { height: 60px; }
+    .brand .name { font-size: 15px; }
+    .hero { padding: 40px 0 36px; }
+    .hero h1 { font-size: 28px; }
+    .content { padding: 32px 20px 64px; }
+    .section-card { padding: 22px 20px; border-radius: 14px; }
+    .foot-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .foot-links { flex-wrap: wrap; gap: 12px; }
+  }
 </style>
 </head>
 <body>
