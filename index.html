@@ -628,11 +628,11 @@
   <div class="container">
     <div class="counters-row">
       <div class="counter-cell">
-        <div class="counter-num"><span class="count-up" data-target="2500" data-prefix="+">0</span><span class="suffix">+</span></div>
+        <div class="counter-num">2.500<span class="suffix">+</span></div>
         <div class="counter-lbl">Questões comentadas</div>
       </div>
       <div class="counter-cell">
-        <div class="counter-num"><span class="count-up" data-target="200" data-prefix="+">0</span></div>
+        <div class="counter-num">200<span class="suffix">+</span></div>
         <div class="counter-lbl">Médicos assinantes</div>
       </div>
       <div class="counter-cell">
@@ -640,7 +640,7 @@
         <div class="counter-lbl">Meses de acesso à plataforma</div>
       </div>
       <div class="counter-cell">
-        <div class="counter-num"><span class="count-up" data-target="7">0</span></div>
+        <div class="counter-num">7</div>
         <div class="counter-lbl">Dias de garantia incondicional</div>
       </div>
     </div>
@@ -1234,29 +1234,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Counter animation
-  const animateCounter = (el, target) => {
-    const duration = 1800;
-    const start = performance.now();
-    const prefix = el.dataset.prefix || '';
-    const step = now => {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      el.textContent = prefix + Math.floor(ease * target).toLocaleString('pt-BR');
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  };
-
-  const counterObserver = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      animateCounter(el, Number(el.dataset.target));
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.count-up').forEach(el => counterObserver.observe(el));
 </script>
 </body>
 </html>
