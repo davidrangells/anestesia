@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bem-vindo — Anestesia Questões</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0B1B33; --ink-2: #1B2A44; --muted: #5A6A85;
+    --line: #E4E9F2; --line-2: #EEF2F8; --bg: #FBFCFE;
+    --blue: #2A6DF4; --blue-2: #4F8CFF; --blue-3: #1E4FBF;
+    --sky: #E8F0FE; --sky-2: #F2F6FE;
+    --green: #059669; --green-bg: #ECFDF5; --green-line: #A7F3D0;
+    --shadow-1: 0 1px 0 rgba(11,27,51,0.04), 0 1px 2px rgba(11,27,51,0.04);
+    --shadow-2: 0 8px 24px -10px rgba(15,42,99,0.12), 0 1px 0 rgba(11,27,51,0.04);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; overflow-x: hidden; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Plus Jakarta Sans", system-ui, sans-serif; color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.6; font-size: 16px; }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+
+  /* Nav */
+  .nav { position: sticky; top: 0; z-index: 60; backdrop-filter: saturate(140%) blur(12px); background: rgba(251,252,254,0.88); border-bottom: 1px solid rgba(228,233,242,0.7); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 6px; }
+  .brand img { height: 34px; width: auto; }
+  .brand .name { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .brand .name span { color: var(--blue); }
+
+  /* Hero */
+  .hero { background: linear-gradient(160deg, var(--sky) 0%, var(--sky-2) 50%, var(--bg) 100%); border-bottom: 1px solid var(--line); padding: 40px 0 36px; position: relative; overflow: hidden; }
+  .hero::after { content: ""; position: absolute; right: -200px; top: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(79,140,255,0.1), transparent 60%); pointer-events: none; }
+  .hero-inner { max-width: 680px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--blue-3); background: white; padding: 6px 14px; border-radius: 999px; border: 1px solid #DCE7FB; box-shadow: var(--shadow-1); margin-bottom: 14px; }
+  .eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 0 3px rgba(42,109,244,.15); }
+  .hero h1 { font-size: clamp(26px, 3.2vw, 40px); font-weight: 800; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 12px; line-height: 1.1; }
+  .hero h1 .accent { color: var(--blue); }
+  .hero-sub { font-size: 15px; color: var(--muted); margin: 0; line-height: 1.65; max-width: 540px; }
+
+  /* Content */
+  .content { max-width: 680px; margin: 0 auto; padding: 36px 28px 72px; }
+
+  /* Steps */
+  .steps-label { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); margin: 0 0 16px; }
+  .steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 36px; }
+  .step-card { background: white; border: 1px solid var(--line); border-radius: 16px; padding: 20px 24px; box-shadow: var(--shadow-1); display: flex; gap: 18px; align-items: flex-start; transition: border-color .2s, box-shadow .2s; }
+  .step-card:hover { border-color: #C7D5EF; box-shadow: var(--shadow-2); }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 10px; background: var(--sky); color: var(--blue); font-size: 15px; font-weight: 800; flex-shrink: 0; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0 0 4px; letter-spacing: -0.01em; }
+  .step-desc { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.65; }
+
+  /* CTAs */
+  .cta-group { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 12px; font-weight: 700; font-size: 15px; transition: transform .15s, background .2s, border-color .2s; white-space: nowrap; font-family: inherit; cursor: pointer; border: none; text-decoration: none; }
+  .btn-primary { background: linear-gradient(180deg, var(--blue-2), var(--blue)); color: white; box-shadow: 0 8px 20px -8px rgba(42,109,244,0.45); }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 24px -8px rgba(42,109,244,0.5); }
+  .btn-ghost { background: white; color: var(--ink-2); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #C7D5EF; }
+
+  /* Tip note */
+  .tip-note { background: var(--sky); border: 1px solid #DCE7FB; border-radius: 14px; padding: 16px 20px; display: flex; gap: 12px; align-items: flex-start; }
+  .tip-note svg { flex-shrink: 0; color: var(--blue); margin-top: 2px; }
+  .tip-note p { margin: 0; font-size: 14px; color: var(--blue-3); line-height: 1.65; }
+  .tip-note strong { color: var(--ink); }
+
+  /* Footer */
+  footer { background: white; border-top: 1px solid var(--line); padding: 36px 0; }
+  .foot-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .foot-copy { font-size: 13px; color: var(--muted); }
+  .foot-links { display: flex; gap: 20px; }
+  .foot-links a { font-size: 13px; color: var(--muted); }
+  .foot-links a:hover { color: var(--blue); }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    .nav-inner { height: 60px; }
+    .brand .name { font-size: 15px; }
+    .hero { padding: 36px 0 30px; }
+    .hero h1 { font-size: 26px; }
+    .content { padding: 28px 20px 56px; }
+    .step-card { padding: 16px 18px; }
+    .cta-group { flex-direction: column; }
+    .btn { width: 100%; }
+    .foot-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .foot-links { flex-wrap: wrap; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">
+      <img src="img/Logo.png" alt="Anestesia Questões" />
+      <div class="name">Anestesia<span> Questões</span></div>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="eyebrow"><span class="dot"></span>Acesso liberado</div>
+      <h1>Bem-vindo ao <span class="accent">Anestesia Questões</span></h1>
+      <p class="hero-sub">Sua plataforma está pronta. Agora é hora de estudar com método, foco e rotina orientada por dados.</p>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="content">
+
+    <p class="steps-label">Por onde começar</p>
+
+    <div class="steps">
+      <div class="step-card">
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <p class="step-title">Defina seu objetivo</p>
+          <p class="step-desc">Escolha TEA, TSA ou Residência para direcionar imediatamente seus filtros de estudo e montar uma preparação com foco real.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <p class="step-title">Faça um simulado inicial</p>
+          <p class="step-desc">Use o primeiro simulado para identificar pontos fortes e lacunas com precisão. Isso orienta toda a sua revisão a partir daí.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <p class="step-title">Monte sua rotina de revisão</p>
+          <p class="step-desc">Acompanhe o dashboard e priorize os temas de maior impacto para subir sua performance semana a semana.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-group">
+      <a class="btn btn-primary" href="https://anestesia-questoes-aluno.vercel.app" target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+        Começar agora na plataforma
+      </a>
+      <a class="btn btn-ghost" href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Acabei%20de%20acessar%20a%20plataforma%20e%20preciso%20de%20ajuda%20para%20o%20primeiro%20acesso." target="_blank" rel="noopener noreferrer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Suporte para primeiro acesso
+      </a>
+    </div>
+
+    <div class="tip-note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7z"/></svg>
+      <p><strong>Dica de alto desempenho:</strong> faça seu primeiro bloco de questões hoje para criar tração imediata na preparação. Consistência nos primeiros dias define o ritmo de todo o ciclo.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-copy">© 2026 Anestesia Questões · Todos os direitos reservados</div>
+      <div class="foot-links">
+        <a href="termos.html">Termos de Uso</a>
+        <a href="privacidade.html">Política de Privacidade</a>
+        <a href="https://wa.me/5515991008159" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
