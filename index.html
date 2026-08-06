@@ -155,6 +155,9 @@
   .btn-lg { height: 56px; padding: 0 28px; font-size: 16px; border-radius: 14px; }
 
   /* ---------- Reveal animation ---------- */
+  .topics-grid { display: flex; flex-wrap: wrap; gap: 10px; max-width: 860px; margin: 32px auto 0; justify-content: center; }
+  .topic-chip { padding: 9px 16px; border-radius: 999px; font-size: 13.5px; font-weight: 600; color: #3D4D6A; border: 1px solid var(--line-2); background: white; }
+  .topic-chip.more { color: var(--blue); border-color: var(--blue); background: #F5F8FF; }
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
@@ -235,6 +238,13 @@
   .pv-opt.correct { border-color: #C9E8DA; background: #F1FAF5; }
   .pv-opt.correct .letter { background: var(--ok); color: white; }
   .pv-opt.correct .check { margin-left: auto; color: var(--ok); }
+  button.pv-opt { width: 100%; background: white; font-family: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background .15s ease, transform .1s ease; }
+  button.pv-opt:not(:disabled):hover { border-color: var(--blue); background: #F5F8FF; transform: translateY(-1px); }
+  button.pv-opt:disabled { cursor: default; }
+  .pv-opt.wrong { border-color: #F3C4C4; background: #FFF5F5; }
+  .pv-opt.wrong .letter { background: #ef4444; color: white; }
+  .pv-comment { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: #F1FAF5; border: 1px solid #C9E8DA; font-size: 12px; line-height: 1.55; color: #2A4A3A; }
+  .pv-comment.wrong-state { background: #FFF9F0; border-color: #F0DCBB; color: #5A4A2A; }
   .pv-foot { display: flex; justify-content: space-between; margin-top: 14px; align-items: center; }
   .pv-progress { font-size: 11px; color: #6A7A95; font-family: "JetBrains Mono", monospace; }
   .pv-next { font-size: 11px; color: white; background: var(--blue); padding: 6px 11px; border-radius: 8px; font-weight: 600; }
@@ -492,8 +502,12 @@
     .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   }
   @media (max-width: 980px) {
-    .preview-wrap { display: none; }
     .hero-grid { grid-template-columns: 1fr; }
+    /* Versão mobile simplificada da questão interativa: sem sidebar nem cards flutuantes */
+    .preview-wrap { perspective: none; margin-top: 4px; }
+    .preview-body { grid-template-columns: 1fr; padding: 18px; gap: 0; }
+    .pv-side { display: none; }
+    .float-card { display: none; }
   }
 
   /* WhatsApp float */
@@ -575,7 +589,7 @@
         </div>
       </div>
 
-      <div class="preview" aria-hidden="true">
+      <div class="preview">
         <div class="preview-bar">
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
           <span class="url">anestesiaquestoes.com.br/simulado</span>
@@ -590,22 +604,21 @@
             <div class="it"><span class="ic"></span>Desempenho</div>
             <div class="it"><span class="ic"></span>Histórico</div>
           </aside>
-          <div class="pv-main">
+          <div class="pv-main" id="hero-question">
             <span class="pv-q-tag">Questão 12 · Anestésicos locais</span>
             <div class="pv-q-title">
               Paciente de 68 kg recebe bloqueio de plexo braquial com 30 mL de bupivacaína 0,5%. Qual é a dose total administrada, em mg/kg?
             </div>
-            <div class="pv-opt"><span class="letter">A</span><span>1,8 mg/kg</span></div>
-            <div class="pv-opt correct">
-              <span class="letter">B</span>
-              <span>2,2 mg/kg</span>
-              <svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+            <button type="button" class="pv-opt" data-opt="0"><span class="letter">A</span><span>1,8 mg/kg</span></button>
+            <button type="button" class="pv-opt" data-opt="1"><span class="letter">B</span><span>2,2 mg/kg</span></button>
+            <button type="button" class="pv-opt" data-opt="2"><span class="letter">C</span><span>3,0 mg/kg</span></button>
+            <button type="button" class="pv-opt" data-opt="3"><span class="letter">D</span><span>4,4 mg/kg</span></button>
+            <div class="pv-comment" id="pv-comment" hidden>
+              <strong id="pv-comment-verdict"></strong> Bupivacaína 0,5% = 5 mg/mL. 30 mL × 5 mg/mL = 150 mg. Em um paciente de 68 kg: 150 ÷ 68 ≈ <strong>2,2 mg/kg</strong> — próximo do limite máximo recomendado da bupivacaína sem vasoconstritor.
             </div>
-            <div class="pv-opt"><span class="letter">C</span><span>3,0 mg/kg</span></div>
-            <div class="pv-opt"><span class="letter">D</span><span>4,4 mg/kg</span></div>
             <div class="pv-foot">
               <span class="pv-progress">12 / 40</span>
-              <span class="pv-next">Ver comentário →</span>
+              <span class="pv-next" id="pv-hint">Responda e veja o comentário ✦</span>
             </div>
           </div>
         </div>
@@ -616,7 +629,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
         </div>
         <div>
-          <div class="num">2.500+</div>
+          <div class="num">4.500+</div>
           <div class="lbl">Questões comentadas</div>
         </div>
       </div>
@@ -629,7 +642,7 @@
   <div class="container">
     <div class="counters-row">
       <div class="counter-cell">
-        <div class="counter-num">2.500<span class="suffix">+</span></div>
+        <div class="counter-num">4.500<span class="suffix">+</span></div>
         <div class="counter-lbl">Questões comentadas</div>
       </div>
       <div class="counter-cell">
@@ -939,13 +952,41 @@
   </div>
 </section>
 
+<!-- ============= TEMAS ============= -->
+<section id="temas" style="background: var(--sky-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <div class="container">
+    <div class="sec-head reveal" style="max-width: 680px;">
+      <span class="eyebrow"><span class="dot"></span>O que cai na prova</span>
+      <h2 style="margin-top: 18px;">Cobertura completa dos grandes temas da especialidade</h2>
+      <p style="margin-top: 16px;">O banco cobre toda a amplitude cobrada em TEA, TSA e Residência, do básico às subespecialidades — para você não ser surpreendido no dia da prova.</p>
+    </div>
+    <div class="topics-grid reveal" aria-label="Temas cobertos pelo banco de questões">
+      <span class="topic-chip">Fisiologia e farmacologia aplicadas</span>
+      <span class="topic-chip">Anestésicos inalatórios, venosos e locais</span>
+      <span class="topic-chip">Bloqueio neuromuscular</span>
+      <span class="topic-chip">Vias aéreas</span>
+      <span class="topic-chip">Anestesia neuroaxial e bloqueios periféricos</span>
+      <span class="topic-chip">Monitorização</span>
+      <span class="topic-chip">Parada cardíaca e reanimação</span>
+      <span class="topic-chip">Complicações e recuperação anestésica</span>
+      <span class="topic-chip">Equilíbrio hidroeletrolítico e transfusão</span>
+      <span class="topic-chip">Anestesia em obstetrícia e pediatria</span>
+      <span class="topic-chip">Cirurgia cardiovascular, torácica e neurocirurgia</span>
+      <span class="topic-chip">Dor aguda e crônica</span>
+      <span class="topic-chip">Medicina perioperatória</span>
+      <span class="topic-chip">Qualidade e segurança do paciente</span>
+      <span class="topic-chip more">e muito mais</span>
+    </div>
+  </div>
+</section>
+
 <!-- ============= PLANS ============= -->
 <section class="plans-wrap" id="planos">
   <div class="container">
     <div class="sec-head reveal">
       <span class="eyebrow"><span class="dot"></span>Planos</span>
       <h2 style="margin-top: 18px;">Planos para cada etapa da sua preparação</h2>
-      <p>12 meses de acesso, pagamento seguro via Eduzz, com garantia incondicional de 7 dias.</p>
+      <p>12 meses de acesso, pagamento seguro via Eduzz, com garantia incondicional de 7 dias. Acesso liberado em minutos após a confirmação — direto no navegador.</p>
     </div>
 
     <div class="plans">
@@ -963,7 +1004,7 @@
         </div>
         <div class="install">ou R$ 1.048,00 à vista</div>
         <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+1.600 questões</strong> focadas em ME1, ME2, ME3 e TEA</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+3.000 questões</strong> focadas em ME1, ME2, ME3 e TEA</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Questões comentadas e comentários em atualização contínua</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Simulados personalizados por tema e prova</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Dashboard de desempenho completo</span></li>
@@ -991,7 +1032,7 @@
         </div>
         <div class="install">ou R$ 1.398,00 à vista</div>
         <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+2.500 questões</strong> cobrindo TSA, TEA e toda a residência</span></li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+4.500 questões</strong> cobrindo TSA, TEA e toda a residência</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cobertura ampla: ME1, ME2, ME3, TEA e TSA</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Comentários, simulados e dashboard ilimitados</span></li>
           <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Suporte prioritário por WhatsApp</span></li>
@@ -1034,7 +1075,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Qual a diferença entre o plano ME/TEA e o TSA? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="faq-a">O plano ME/TEA inclui +1.600 questões focadas em ME1, ME2, ME3 e TEA — ideal para residentes e quem vai prestar TEA. O plano TSA inclui +2.500 questões e cobre, além de tudo isso, o conteúdo específico da TSA. Se você ainda vai prestar TSA, vale o plano completo.</div>
+        <div class="faq-a">O plano ME/TEA inclui +3.000 questões focadas em ME1, ME2, ME3 e TEA — ideal para residentes e quem vai prestar TEA. O plano TSA inclui +4.500 questões e cobre, além de tudo isso, o conteúdo específico da TSA. Se você ainda vai prestar TSA, vale o plano completo.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Consigo estudar pelo celular? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1214,6 +1255,32 @@
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
   }
+
+  // Questão interativa do hero
+  (function () {
+    const CORRECT = 1; // alternativa B
+    const opts = document.querySelectorAll('#hero-question .pv-opt');
+    const comment = document.getElementById('pv-comment');
+    const verdict = document.getElementById('pv-comment-verdict');
+    const hint = document.getElementById('pv-hint');
+    opts.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const chosen = Number(btn.dataset.opt);
+        opts.forEach(b => { b.disabled = true; });
+        opts[CORRECT].classList.add('correct');
+        opts[CORRECT].insertAdjacentHTML('beforeend', '<svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>');
+        if (chosen === CORRECT) {
+          verdict.textContent = '✓ Você acertou!';
+        } else {
+          btn.classList.add('wrong');
+          comment.classList.add('wrong-state');
+          verdict.textContent = '✗ Quase. A correta é a B.';
+        }
+        comment.hidden = false;
+        if (hint) hint.textContent = 'É assim na plataforma ✦';
+      });
+    });
+  })();
 
   // Scroll reveal
   const revealObserver = new IntersectionObserver((entries) => {
