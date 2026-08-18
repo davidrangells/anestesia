@@ -66,7 +66,6 @@
         { "@type": "Question", "name": "A garantia de 7 dias funciona mesmo?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Se nos primeiros 7 dias você sentir que a plataforma não é para você, basta solicitar o reembolso. Devolvemos 100% do valor, sem perguntas." } },
         { "@type": "Question", "name": "O que está incluído no plano?", "acceptedAnswer": { "@type": "Answer", "text": "É um plano único com tudo liberado: mais de 4.500 questões comentadas cobrindo ME1, ME2, ME3, TEA e TSA, simulados personalizados, dashboard de desempenho, flashcards com revisão espaçada, plano de estudo diário, questão do dia, caderno de erros e suporte por WhatsApp, por 12 meses." } },
         { "@type": "Question", "name": "Consigo estudar pelo celular?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. A plataforma possui acesso pelo navegador e também app nativo para iPhone disponível na App Store. Histórico e desempenho ficam sincronizados." } },
-        { "@type": "Question", "name": "As questões têm comentários?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. As questões contam com comentários objetivos para ajudar na revisão do raciocínio e na fixação dos principais temas de anestesiologia." } },
         { "@type": "Question", "name": "O banco é atualizado?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O banco passa por atualizações contínuas com novas questões, comentários e melhorias na experiência de estudo." } },
         { "@type": "Question", "name": "A plataforma substitui livros e aulas?", "acceptedAnswer": { "@type": "Answer", "text": "A plataforma é uma ferramenta de treino e revisão por questões. Ela ajuda a organizar sua prática, medir desempenho e direcionar seus estudos, podendo complementar livros, aulas e materiais teóricos." } }
       ]
@@ -257,7 +256,7 @@
   /* ---------- Social proof counters ---------- */
   .counters-wrap { padding: 0 0 16px; }
   .counters-row {
-    display: grid; grid-template-columns: repeat(4, 1fr);
+    display: grid; grid-template-columns: repeat(3, 1fr);
     background: white; border: 1px solid var(--line); border-radius: 20px; overflow: hidden;
   }
   .counter-cell { padding: 28px; border-right: 1px solid var(--line-2); text-align: center; }
@@ -519,6 +518,25 @@
     .float-card { display: none; }
   }
 
+  /* Sticky CTA mobile */
+  .sticky-cta { display: none; }
+  @media (max-width: 880px) {
+    .sticky-cta { display: flex; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; align-items: center; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--line); box-shadow: 0 -8px 24px -12px rgba(15,23,42,0.25); transform: translateY(110%); transition: transform .3s ease; }
+    .sticky-cta.show { transform: none; }
+    .sticky-cta .sc-price { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+    .sticky-cta .sc-price strong { font-size: 15px; color: var(--ink); letter-spacing: -0.01em; white-space: nowrap; }
+    .sticky-cta .sc-price span { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px; }
+    .sticky-cta .btn { flex: 1; min-height: 44px; padding: 10px 14px; font-size: 14px; min-width: 96px; }
+    .sticky-cta { box-sizing: border-box; max-width: 100vw; }
+    .sticky-cta .sc-wa { width: 44px; height: 44px; border-radius: 12px; background: #25D366; color: white; display: grid; place-items: center; flex-shrink: 0; }
+    a.wa-float.wa-float { display: none; } /* no mobile a barra já tem WhatsApp (especificidade > regra base abaixo) */
+    body.has-sticky { padding-bottom: 76px; }
+  }
+
+  /* Acessibilidade: foco visível por teclado e alvos de toque */
+  .btn:focus-visible, .pv-opt:focus-visible, .faq-q:focus-visible, .nav a:focus-visible, .app-badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
+  @media (max-width: 880px) { .pv-opt { min-height: 44px; } .faq-q { min-height: 44px; } }
+
   /* WhatsApp float */
   .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: white; display: grid; place-items: center; box-shadow: 0 12px 28px -8px rgba(37,211,102,0.55); transition: transform .2s; }
   .wa-float:hover { transform: scale(1.06); }
@@ -537,11 +555,10 @@
       <a href="#produto">A plataforma</a>
       <a href="#planos">Planos</a>
       <a href="#faq">Dúvidas</a>
-      <a href="#para-quem-e">Para quem é</a>
     </nav>
     <div class="nav-cta">
       <a class="login" href="https://app.anestesiaquestoes.com.br" target="_blank" rel="noopener noreferrer">Entrar</a>
-      <a class="btn btn-primary" href="#planos">Começar agora</a>
+      <a class="btn btn-primary" href="#planos">Assinar agora</a>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -551,7 +568,6 @@
     <a href="#produto" onclick="closeMobileMenu()">A plataforma</a>
     <a href="#planos" onclick="closeMobileMenu()">Planos</a>
     <a href="#faq" onclick="closeMobileMenu()">Dúvidas</a>
-    <a href="#para-quem-e" onclick="closeMobileMenu()">Para quem é</a>
     <a href="https://app.anestesiaquestoes.com.br" target="_blank" rel="noopener noreferrer">Entrar na plataforma</a>
   </div>
 </header>
@@ -566,7 +582,7 @@
         Questões comentadas e simulados para <span class="accent">TEA, TSA</span> e Residência <span class="accent">(ME)</span>
       </h1>
       <p class="lede">
-        Treine com questões de anestesiologia organizadas por prova, tema e nível, monte simulados personalizados, revise com comentários objetivos e acompanhe sua evolução até a prova.
+        Monte simulados por prova e tema, revise com comentários objetivos e chegue no dia da prova sabendo exatamente onde você erra.
       </p>
       <div class="hero-tags">
         <span class="hero-tag">ME1 · ME2 · ME3</span>
@@ -583,18 +599,18 @@
       </div>
       <p style="margin-top: 18px; font-size: 13px; color: var(--muted);">
         <svg style="display:inline;vertical-align:middle;margin-right:4px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        7 dias de garantia. Acesso por 12 meses. Estude pelo computador ou pelo app iOS.
+        Acesso em minutos, direto no navegador — sem instalar nada. 7 dias de garantia.
       </p>
     </div>
 
     <div class="preview-wrap">
       <div class="float-card fc-1">
         <div class="ic-wrap">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         </div>
         <div>
-          <div class="num">7 dias</div>
-          <div class="lbl">Garantia incondicional</div>
+          <div class="num">No navegador</div>
+          <div class="lbl">Sem instalar nada</div>
         </div>
       </div>
 
@@ -659,12 +675,8 @@
         <div class="counter-lbl">Médicos assinantes</div>
       </div>
       <div class="counter-cell">
-        <div class="counter-num">12</div>
-        <div class="counter-lbl">Meses de acesso à plataforma</div>
-      </div>
-      <div class="counter-cell">
-        <div class="counter-num">7</div>
-        <div class="counter-lbl">Dias de garantia incondicional</div>
+        <div class="counter-num">14</div>
+        <div class="counter-lbl">Grandes temas cobertos</div>
       </div>
     </div>
   </div>
@@ -677,7 +689,7 @@
       <h2>Estudar anestesiologia sem direção custa caro</h2>
       <p style="margin-top: 16px;">O problema não é apenas estudar pouco. É estudar sem saber exatamente onde estão seus pontos fracos. A Anestesia Questões foi criada para transformar esse estudo em um processo objetivo, mensurável e direcionado.</p>
     </div>
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 980px; margin: 0 auto;" class="pain-grid">
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto;" class="pain-grid">
       <div class="feat-card reveal" style="background: white;">
         <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
         <h3 style="font-size: 16px;">Pouco tempo entre plantões</h3>
@@ -685,27 +697,17 @@
       </div>
       <div class="feat-card reveal" style="background: white;">
         <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-        <h3 style="font-size: 16px;">Excesso de conteúdo, falta de foco</h3>
+        <h3 style="font-size: 16px;">Excesso de conteúdo sem ordem</h3>
         <p>Livros, PDFs e questões soltas sem organização dificultam saber o que priorizar e o que já está consolidado.</p>
       </div>
       <div class="feat-card reveal" style="background: white;">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
-        <h3 style="font-size: 16px;">Sensação de estudar sem evoluir</h3>
-        <p>Sem acompanhar desempenho por tema, fica difícil saber se a revisão está funcionando ou onde concentrar esforço.</p>
-      </div>
-      <div class="feat-card reveal" style="background: white;">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
-        <h3 style="font-size: 16px;">Dificuldade em saber o que priorizar</h3>
-        <p>Com tantos temas e provas diferentes, é difícil montar uma ordem de revisão que faça sentido para o momento atual.</p>
-      </div>
-      <div class="feat-card reveal" style="background: white;">
         <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <h3 style="font-size: 16px;">Revisão de erros pouco organizada</h3>
+        <h3 style="font-size: 16px;">Erros que se repetem</h3>
         <p>Resolver questões sem revisar os erros com atenção impede a fixação real dos temas que mais caem nas provas.</p>
       </div>
       <div class="feat-card reveal" style="background: white;">
         <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3 style="font-size: 16px;">Insegurança antes da prova</h3>
+        <h3 style="font-size: 16px;">Insegurança perto da prova</h3>
         <p>Chegar perto da data sem clareza sobre seus pontos fracos gera ansiedade e torna a revisão final menos eficiente.</p>
       </div>
     </div>
@@ -769,15 +771,15 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
         </div>
         <h3>Comentários explicativos</h3>
-        <p>Cada questão acompanha resposta comentada com fundamentação clínica e referências para você estudar a fundo.</p>
+        <p>Cada questão acompanha resposta comentada com fundamentação clínica objetiva — direto ao ponto, para revisar entre plantões.</p>
       </div>
 
       <div class="feat-card reveal">
         <div class="feat-ic">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         </div>
-        <h3>App nativo para iOS</h3>
-        <p>Estude no computador no plantão e continue pelo app no celular. Simulados, histórico e desempenho sempre com você. <span style="opacity:0.55">(Android em breve)</span></p>
+        <h3>Caderno de erros + flashcards</h3>
+        <p>Cada erro vira um flashcard com revisão espaçada. Você revê exatamente o que errou, no momento certo — sem depender de memória.</p>
       </div>
 
       <div class="feat-card reveal">
@@ -797,24 +799,20 @@
     <div class="screenshots-grid">
       <div class="screenshot-copy reveal">
         <span class="eyebrow"><span class="dot"></span>A plataforma na prática</span>
-        <h2 style="margin-top: 18px;">Simples de usar,<br><span style="color: var(--blue);">poderoso para estudar.</span></h2>
+        <h2 style="margin-top: 18px;">Simples de usar, <span style="color: var(--blue);">poderoso para estudar.</span></h2>
         <p>Interface limpa pensada para quem tem pouco tempo. Resolva questões, veja seus resultados e volte para o que importa.</p>
         <div class="screenshot-list" style="margin-top: 24px;">
           <div class="screenshot-item">
             <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="14" y2="12"/><line x1="4" y1="18" x2="11" y2="18"/></svg></div>
-            <div><h4>Filtros por prova, ano e tema</h4><p>Selecione por TEA, TSA, ME e residência. Filtre por assunto e treine exatamente o que precisa.</p></div>
-          </div>
-          <div class="screenshot-item">
-            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
-            <div><h4>Painel de desempenho</h4><p>Veja sua taxa de acerto por tema e descubra onde focar.</p></div>
+            <div><h4>1. Filtre</h4><p>Escolha prova, ano e tema. Treine exatamente o que precisa, sem conteúdo solto.</p></div>
           </div>
           <div class="screenshot-item">
             <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-            <div><h4>Comentários clínicos</h4><p>Cada questão com gabarito comentado e fundamentação.</p></div>
+            <div><h4>2. Resolva e entenda</h4><p>Responda, veja o gabarito e leia o comentário clínico objetivo.</p></div>
           </div>
           <div class="screenshot-item">
-            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
-            <div><h4>App nativo para iPhone</h4><p>Estude no celular com a mesma experiência da web — simulados, histórico e desempenho sempre no seu bolso. <span style="opacity:0.55">(Android em breve)</span></p></div>
+            <div class="si-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
+            <div><h4>3. Veja onde errou</h4><p>Resultado por tema na hora, com os erros indo direto para o seu caderno de revisão.</p></div>
           </div>
         </div>
       </div>
@@ -904,20 +902,6 @@
       </div>
     </div>
 
-    <div class="screenshots-app-row reveal">
-      <div class="screenshots-app-text">
-        <span class="screenshots-app-label">Baixe o app gratuito</span>
-        <p class="screenshots-app-sub">Disponível para iPhone agora · Android em breve</p>
-      </div>
-      <a class="app-badge" href="https://apps.apple.com/br/app/anestesia-quest%C3%B5es/id6762927242" target="_blank" rel="noopener noreferrer">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-        <div><div class="ab-sub">Baixar na</div><div class="ab-name">App Store</div></div>
-      </a>
-      <div class="app-badge soon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.96.07l.1-.06 11.4-6.58-2.48-2.49-9.98 9.06zM.48 1.75C.18 2.07 0 2.57 0 3.22v17.54c0 .65.18 1.15.49 1.47l.08.07 9.82-9.82v-.23L.56 1.68l-.08.07zM20.13 8.49l-2.79-1.61-2.77 2.77 2.77 2.77 2.82-1.63c.8-.46.8-1.22-.03-1.3zM4.14.25l-.1-.06C3.73.07 3.38.09 3.08.26L13.14 10.3l-2.5-2.5L4.14.25z"/></svg>
-        <div><div class="ab-sub">Android</div><div class="ab-name">Em breve</div></div>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -932,8 +916,8 @@
       <div class="step reveal">
         <div class="num">1</div>
         <div class="step-text">
-          <h3>Escolha seu foco</h3>
-          <p style="font-size:14px;color:var(--muted);margin-top:4px;">Defina se quer estudar para TEA, TSA, ME1, ME2, ME3 ou por temas específicos da anestesiologia.</p>
+          <h3>Escolha sua prova ou seus temas</h3>
+          <p style="font-size:14px;color:var(--muted);margin-top:4px;">Escolha sua prova ou os temas que quer reforçar — a plataforma monta o resto.</p>
         </div>
       </div>
       <div class="step reveal">
@@ -1011,10 +995,10 @@
               <div class="price-main">
                 <span class="currency">R$</span>
                 <span class="amount">108,39</span>
-                <span class="per">/ mês</span>
+                <span class="per">no cartão</span>
               </div>
             </div>
-            <div class="install">ou R$ 1.048,00 à vista</div>
+            <div class="install">ou R$ 1.048,00 à vista no Pix</div>
             <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="outbound_checkout_click" data-plan="anestesia_questoes">Assinar agora</a>
             <div class="guarantee-note">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1040,12 +1024,27 @@
     </div>
 
     <p style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted); max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-      Menos que o valor de muitos livros técnicos por mês para estudar com questões, simulados, flashcards e análise de desempenho durante 12 meses.
+      R$ 2,87 por dia durante um ano inteiro de preparação — com questões, simulados, flashcards e análise de desempenho. Teste por 7 dias: não gostou, devolvemos 100%.
     </p>
     <p style="text-align: center; margin-top: 16px; font-size: 14px;">
       Ficou com alguma dúvida antes de assinar?
       <a href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Anestesia%20Quest%C3%B5es%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 600;" data-event="click_whatsapp">Fale com a gente no WhatsApp →</a>
     </p>
+
+    <div class="screenshots-app-row reveal" style="max-width: 900px; margin-left: auto; margin-right: auto;">
+      <div class="screenshots-app-text">
+        <span class="screenshots-app-label">Assinou? Leve no bolso.</span>
+        <p class="screenshots-app-sub">App para iPhone incluído na assinatura · Android em breve</p>
+      </div>
+      <a class="app-badge" href="https://apps.apple.com/br/app/anestesia-quest%C3%B5es/id6762927242" target="_blank" rel="noopener noreferrer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <div><div class="ab-sub">Baixar na</div><div class="ab-name">App Store</div></div>
+      </a>
+      <div class="app-badge soon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.96.07l.1-.06 11.4-6.58-2.48-2.49-9.98 9.06zM.48 1.75C.18 2.07 0 2.57 0 3.22v17.54c0 .65.18 1.15.49 1.47l.08.07 9.82-9.82v-.23L.56 1.68l-.08.07zM20.13 8.49l-2.79-1.61-2.77 2.77 2.77 2.77 2.82-1.63c.8-.46.8-1.22-.03-1.3zM4.14.25l-.1-.06C3.73.07 3.38.09 3.08.26L13.14 10.3l-2.5-2.5L4.14.25z"/></svg>
+        <div><div class="ab-sub">Android</div><div class="ab-name">Em breve</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1064,7 +1063,7 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">A garantia de 7 dias funciona mesmo? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="faq-a">Sim. Se nos primeiros 7 dias você sentir que a plataforma não é para você, dentro do prazo de 7 dias você pode solicitar o reembolso conforme nossa política de garantia.</div>
+        <div class="faq-a">Sim. Se em até 7 dias você achar que a plataforma não é para você, peça o reembolso pelo WhatsApp ou direto na Eduzz. Devolvemos 100% do valor, sem perguntas.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">O que está incluído no plano? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
@@ -1087,10 +1086,6 @@
         <div class="faq-a">Claro. Manda mensagem no nosso WhatsApp — respondemos rápido e tiramos qualquer dúvida sobre conteúdo, plano ou pagamento antes da sua decisão.</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q">As questões têm comentários? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="faq-a">Sim. As questões contam com comentários objetivos para ajudar na revisão do raciocínio e na fixação dos principais temas de anestesiologia.</div>
-      </div>
-      <div class="faq-item reveal">
         <button class="faq-q">Serve para ME1 / R1? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="faq-a">Sim. A plataforma permite estudar por níveis e temas, o que ajuda o ME1/R1 a focar no conteúdo mais adequado para sua fase da residência.</div>
       </div>
@@ -1100,54 +1095,19 @@
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">O acesso é liberado imediatamente após o pagamento? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="faq-a">Após a confirmação do pagamento, o acesso é liberado conforme o fluxo da plataforma e as instruções são enviadas ao e-mail cadastrado.</div>
+        <div class="faq-a">Sim. Confirmado o pagamento, você recebe o e-mail de acesso em poucos minutos e já pode estudar direto no navegador — sem instalar nada.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Recebo comprovante para reembolso educacional? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Sim. A Eduzz emite o comprovante de pagamento automaticamente após a compra e a nota fiscal fica disponível na sua área do comprador — serve para auxílio-educação e prestação de contas.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Posso usar no computador e no celular ao mesmo tempo? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">Sim. Seu progresso é sincronizado: você resolve um simulado no computador durante o plantão e continua a revisão pelo celular, no navegador ou no app iOS, sem perder nada.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">A plataforma substitui livros e aulas? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="faq-a">A plataforma é uma ferramenta de treino e revisão por questões. Ela ajuda a organizar sua prática, medir desempenho e direcionar seus estudos, podendo complementar livros, aulas e materiais teóricos.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= SOCIAL PROOF ============= -->
-<section class="testi-wrap" id="para-quem-e">
-  <div class="container">
-    <div class="sec-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Para quem é</span>
-      <h2 style="margin-top: 18px;">O que nossos alunos buscam resolver</h2>
-      <p>Médicos residentes e especialistas que querem estudar com mais organização e chegar à prova conhecendo seus pontos fracos.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Estudar com mais direção</h3>
-        <p>Sem perder tempo com questões aleatórias e sem medir evolução real.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Revisar erros de forma organizada</h3>
-        <p>Entender o raciocínio por trás de cada erro para não repeti-lo na prova.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Acompanhar desempenho por tema</h3>
-        <p>Saber com precisão onde estão os pontos fracos e onde concentrar a revisão.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Criar simulados compatíveis com a rotina</h3>
-        <p>Treinar com o tempo disponível entre plantões, sem abrir mão da qualidade.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Chegar à prova com mais clareza</h3>
-        <p>Conhecer os próprios pontos fracos e chegar à prova com uma revisão bem direcionada.</p>
-      </div>
-      <div class="feat-card reveal">
-        <div class="feat-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg></div>
-        <h3 style="font-size:16px;margin-bottom:8px;">Focar no que mais cai na prova</h3>
-        <p>Filtrar questões por prova, tema e nível para treinar com o conteúdo que realmente aparece.</p>
       </div>
     </div>
   </div>
@@ -1160,12 +1120,12 @@
       <div class="inner">
         <div class="urgency">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          A prova chega rápido. Sua preparação precisa começar com estratégia.
+          Acesso em minutos · Direto no navegador
         </div>
-        <h2>Prepare-se para Residência (ME), TEA e TSA com mais estratégia</h2>
+        <h2>A prova chega rápido. Chegue nela conhecendo seus pontos fracos.</h2>
         <p>Cada simulado respondido mostra com mais clareza onde você precisa melhorar. Começar antes permite revisar com mais calma, medir evolução e ajustar sua rotina.</p>
         <div class="row-ctas">
-          <a class="btn btn-green btn-lg" href="#planos" data-event="click_cta_final">Quero Assinar Agora</a>
+          <a class="btn btn-green btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="click_cta_final">Assinar agora · 12× R$ 108,39</a>
           <a class="btn btn-ghost btn-lg" href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Anestesia%20Quest%C3%B5es%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" data-event="click_whatsapp">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
             Tirar Dúvidas no WhatsApp
@@ -1197,7 +1157,6 @@
         <a href="#produto">A plataforma</a>
         <a href="#planos">Planos</a>
         <a href="#faq">Dúvidas</a>
-        <a href="#para-quem-e">Para quem é</a>
       </div>
       <div class="foot-col">
         <h4>Acesso</h4>
@@ -1227,7 +1186,31 @@
   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
 </a>
 
+<!-- Sticky CTA (mobile) -->
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <div class="sc-price">
+    <strong>12× R$ 108,39</strong>
+    <span>ou R$ 1.048 à vista · 7 dias de garantia</span>
+  </div>
+  <a class="btn btn-primary" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="click_cta_sticky">Assinar</a>
+  <a class="sc-wa" href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Anestesia%20Quest%C3%B5es%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp" data-event="click_whatsapp">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.5 1 2.9 1.2 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.3-.7.3-1.2.2-1.4-.1-.1-.3-.2-.6-.4zM12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.3L2 22l4.8-1.5c1.5.8 3.3 1.3 5.2 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg>
+  </a>
+</div>
+
 <script>
+  // Sticky CTA mobile: aparece depois do hero, some sobre a seção de planos (o card já tem o botão)
+  (function () {
+    const bar = document.getElementById('sticky-cta');
+    const hero = document.getElementById('top');
+    const plans = document.getElementById('planos');
+    if (!bar || !hero || !plans) return;
+    let pastHero = false, onPlans = false;
+    const update = () => { const show = pastHero && !onPlans; bar.classList.toggle('show', show); bar.setAttribute('aria-hidden', String(!show)); document.body.classList.toggle('has-sticky', show); };
+    new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.bottom < 0; update(); }, { threshold: 0 }).observe(hero);
+    new IntersectionObserver(([e]) => { onPlans = e.isIntersecting; update(); }, { threshold: 0.15 }).observe(plans);
+  })();
+
   // FAQ accordion
   document.querySelectorAll('.faq-item').forEach(item => {
     item.querySelector('.faq-q').addEventListener('click', () => {
