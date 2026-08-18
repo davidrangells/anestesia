@@ -52,15 +52,8 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Plano ME/TEA",
+          "name": "Anestesia Questões — Acesso completo",
           "price": "1048.00",
-          "priceCurrency": "BRL",
-          "availability": "https://schema.org/InStock"
-        },
-        {
-          "@type": "Offer",
-          "name": "Plano TSA",
-          "price": "1398.00",
           "priceCurrency": "BRL",
           "availability": "https://schema.org/InStock"
         }
@@ -71,7 +64,7 @@
       "mainEntity": [
         { "@type": "Question", "name": "Quanto tempo dura o acesso?", "acceptedAnswer": { "@type": "Answer", "text": "O acesso é válido por 12 meses corridos a partir da data da assinatura, sem limite diário de questões." } },
         { "@type": "Question", "name": "A garantia de 7 dias funciona mesmo?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Se nos primeiros 7 dias você sentir que a plataforma não é para você, basta solicitar o reembolso. Devolvemos 100% do valor, sem perguntas." } },
-        { "@type": "Question", "name": "Qual a diferença entre o plano ME/TEA e o TSA?", "acceptedAnswer": { "@type": "Answer", "text": "O plano ME/TEA é indicado para residência, médicos em especialização e preparação para o TEA. O plano TSA é mais completo e inclui também questões e conteúdo direcionado ao TSA." } },
+        { "@type": "Question", "name": "O que está incluído no plano?", "acceptedAnswer": { "@type": "Answer", "text": "É um plano único com tudo liberado: mais de 4.500 questões comentadas cobrindo ME1, ME2, ME3, TEA e TSA, simulados personalizados, dashboard de desempenho, flashcards com revisão espaçada, plano de estudo diário, questão do dia, caderno de erros e suporte por WhatsApp, por 12 meses." } },
         { "@type": "Question", "name": "Consigo estudar pelo celular?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. A plataforma possui acesso pelo navegador e também app nativo para iPhone disponível na App Store. Histórico e desempenho ficam sincronizados." } },
         { "@type": "Question", "name": "As questões têm comentários?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. As questões contam com comentários objetivos para ajudar na revisão do raciocínio e na fixação dos principais temas de anestesiologia." } },
         { "@type": "Question", "name": "O banco é atualizado?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O banco passa por atualizações contínuas com novas questões, comentários e melhorias na experiência de estudo." } },
@@ -406,6 +399,22 @@
   .plan .btn { width: 100%; margin-top: auto; }
   .plan .guarantee-note { font-size: 12px; color: var(--muted); text-align: center; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 6px; }
   @media (max-width: 760px) { .plans { grid-template-columns: 1fr; } }
+
+  /* Plano único: card largo em duas colunas (preço | benefícios) */
+  .plans.single { grid-template-columns: 1fr; max-width: 900px; }
+  .plan.single-plan { padding: 0; }
+  .plan.single-plan .plan-inner { display: grid; grid-template-columns: 1fr 1.25fr; border-radius: inherit; overflow: hidden; }
+  .plan.single-plan .plan-col-price { padding: 40px 36px; background: linear-gradient(160deg, #F5F8FF, white); border-right: 1px solid var(--line-2); display: flex; flex-direction: column; }
+  .plan.single-plan .plan-col-features { padding: 40px 36px; }
+  .plan.single-plan .plan-col-features .feat-title { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 16px; }
+  .plan.single-plan ul { margin-bottom: 0; }
+  .plan.single-plan .price-row { margin-top: 18px; padding-top: 18px; }
+  .plan.single-plan .btn { margin-top: 24px; }
+  @media (max-width: 760px) {
+    .plan.single-plan .plan-inner { grid-template-columns: 1fr; }
+    .plan.single-plan .plan-col-price { border-right: 0; border-bottom: 1px solid var(--line-2); padding: 32px 26px; }
+    .plan.single-plan .plan-col-features { padding: 28px 26px; }
+  }
 
   /* ---------- FAQ ---------- */
   .faq-section { background: var(--sky-2); border-top: 1px solid var(--line); }
@@ -984,73 +993,57 @@
 <section class="plans-wrap" id="planos">
   <div class="container">
     <div class="sec-head reveal">
-      <span class="eyebrow"><span class="dot"></span>Planos</span>
-      <h2 style="margin-top: 18px;">Planos para cada etapa da sua preparação</h2>
-      <p>12 meses de acesso, pagamento seguro via Eduzz, com garantia incondicional de 7 dias. Acesso liberado em minutos após a confirmação — direto no navegador.</p>
+      <span class="eyebrow"><span class="dot"></span>Plano único</span>
+      <h2 style="margin-top: 18px;">Um plano. Tudo liberado.</h2>
+      <p>Sem escolher módulo: você assina o Anestesia Questões e recebe acesso completo à plataforma por 12 meses. Pagamento seguro via Eduzz, garantia incondicional de 7 dias e acesso liberado em minutos — direto no navegador.</p>
     </div>
 
-    <div class="plans">
-      <div class="plan reveal">
-        <div class="tier">ME / TEA</div>
-        <h3>Foco na Residência e TEA</h3>
-        <p class="summary">Para residentes R1, R2 e R3 e candidatos à prova de Título de Especialista em Anestesiologia.</p>
-        <div class="price-row">
-          <div class="price-label">12× de</div>
-          <div class="price-main">
-            <span class="currency">R$</span>
-            <span class="amount">108,39</span>
-            <span class="per">/ mês</span>
+    <div class="plans single">
+      <div class="plan featured single-plan reveal">
+        <div class="badge">Acesso completo</div>
+        <div class="plan-inner">
+          <div class="plan-col-price">
+            <div class="tier">Anestesia Questões</div>
+            <h3>Preparação completa</h3>
+            <p class="summary">Para residentes, candidatos ao TEA e ao TSA e anestesiologistas que querem estudar com direção.</p>
+            <div class="price-row">
+              <div class="price-label">12× de</div>
+              <div class="price-main">
+                <span class="currency">R$</span>
+                <span class="amount">108,39</span>
+                <span class="per">/ mês</span>
+              </div>
+            </div>
+            <div class="install">ou R$ 1.048,00 à vista</div>
+            <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="outbound_checkout_click" data-plan="anestesia_questoes">Assinar agora</a>
+            <div class="guarantee-note">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Garantia de 7 dias · Pagamento seguro via Eduzz
+            </div>
           </div>
-        </div>
-        <div class="install">ou R$ 1.048,00 à vista</div>
-        <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+3.000 questões</strong> focadas em ME1, ME2, ME3 e TEA</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Questões comentadas e comentários em atualização contínua</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Simulados personalizados por tema e prova</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Dashboard de desempenho completo</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Acesso por 12 meses · Computador e celular</span></li>
-        </ul>
-        <a class="btn btn-ghost btn-lg" href="https://chk.eduzz.com/1717249" target="_blank" rel="noopener noreferrer" data-event="outbound_checkout_click" data-plan="me_tea">Assinar Plano ME/TEA</a>
-        <div class="guarantee-note">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Garantia de 7 dias · Pagamento seguro via Eduzz
-        </div>
-      </div>
-
-      <div class="plan featured reveal">
-        <div class="badge">Mais completo</div>
-        <div class="tier">TSA</div>
-        <h3>Cobertura completa</h3>
-        <p class="summary">Tudo do plano ME/TEA + bateria completa de questões da TSA e da residência inteira.</p>
-        <div class="price-row">
-          <div class="price-label">12× de</div>
-          <div class="price-main">
-            <span class="currency">R$</span>
-            <span class="amount">144,59</span>
-            <span class="per">/ mês</span>
+          <div class="plan-col-features">
+            <div class="feat-title">Tudo que está incluído</div>
+            <ul>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+4.500 questões comentadas</strong> cobrindo ME1, ME2, ME3, TEA e TSA</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Simulados personalizados</strong> por prova, tema, ano e dificuldade</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Dashboard de desempenho</strong> com taxa de acerto por tema e evolução</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Flashcards com revisão espaçada</strong> para fixar o que mais cai</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Plano de estudo diário</strong> com metas e acompanhamento</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Questão do dia</strong> para manter a constância</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Caderno de erros</strong> para revisar exatamente onde você errou</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Suporte por WhatsApp</strong> com a equipe</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>12 meses de acesso</strong> · computador, celular e app iOS</span></li>
+            </ul>
           </div>
-        </div>
-        <div class="install">ou R$ 1.398,00 à vista</div>
-        <ul>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span><strong>+4.500 questões</strong> cobrindo TSA, TEA e toda a residência</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Cobertura ampla: ME1, ME2, ME3, TEA e TSA</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Comentários, simulados e dashboard ilimitados</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Suporte prioritário por WhatsApp</span></li>
-          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg><span>Acesso por 12 meses · Computador e celular</span></li>
-        </ul>
-        <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="outbound_checkout_click" data-plan="tsa">Assinar Plano TSA</a>
-        <div class="guarantee-note">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Garantia de 7 dias · Pagamento seguro via Eduzz
         </div>
       </div>
     </div>
 
     <p style="text-align: center; margin-top: 20px; font-size: 14px; color: var(--muted); max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-      Menos que o valor de muitos livros técnicos por mês para estudar com questões, simulados e análise de desempenho durante 12 meses.
+      Menos que o valor de muitos livros técnicos por mês para estudar com questões, simulados, flashcards e análise de desempenho durante 12 meses.
     </p>
     <p style="text-align: center; margin-top: 16px; font-size: 14px;">
-      Em dúvida sobre qual plano escolher?
+      Ficou com alguma dúvida antes de assinar?
       <a href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Tenho%20interesse%20na%20Anestesia%20Quest%C3%B5es%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20os%20planos." target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 600;" data-event="click_whatsapp">Fale com a gente no WhatsApp →</a>
     </p>
   </div>
@@ -1074,8 +1067,8 @@
         <div class="faq-a">Sim. Se nos primeiros 7 dias você sentir que a plataforma não é para você, dentro do prazo de 7 dias você pode solicitar o reembolso conforme nossa política de garantia.</div>
       </div>
       <div class="faq-item reveal">
-        <button class="faq-q">Qual a diferença entre o plano ME/TEA e o TSA? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
-        <div class="faq-a">O plano ME/TEA inclui +3.000 questões focadas em ME1, ME2, ME3 e TEA — ideal para residentes e quem vai prestar TEA. O plano TSA inclui +4.500 questões e cobre, além de tudo isso, o conteúdo específico da TSA. Se você ainda vai prestar TSA, vale o plano completo.</div>
+        <button class="faq-q">O que está incluído no plano? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="faq-a">É um plano único com tudo liberado: mais de 4.500 questões comentadas cobrindo ME1, ME2, ME3, TEA e TSA, simulados personalizados, dashboard de desempenho, flashcards com revisão espaçada, plano de estudo diário, questão do dia, caderno de erros e suporte por WhatsApp — por 12 meses, no computador, celular e app iOS.</div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Consigo estudar pelo celular? <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg></button>
