@@ -537,6 +537,83 @@
   .btn:focus-visible, .pv-opt:focus-visible, .faq-q:focus-visible, .nav a:focus-visible, .app-badge:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 10px; }
   @media (max-width: 880px) { .pv-opt { min-height: 44px; } .faq-q { min-height: 44px; } }
 
+  /* ---------- Demo real da questão (visual do portal) ---------- */
+  .demo-wrap { background: var(--sky-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .demo-app { max-width: 1080px; margin: 0 auto; border-radius: 20px; overflow: hidden; border: 1px solid #16284a; box-shadow: 0 30px 80px -30px rgba(2,6,23,0.7); background: #050d1f; color: #e6edf7; font-size: 14px; display: grid; grid-template-columns: 220px 1fr; }
+  .demo-side { background: #071434; border-right: 1px solid #142650; padding: 18px 14px; display: flex; flex-direction: column; gap: 4px; }
+  .demo-brand { display: flex; align-items: center; gap: 10px; padding: 4px 6px 18px; border-bottom: 1px solid #142650; margin-bottom: 14px; }
+  .demo-brand .lg { width: 36px; height: 36px; border-radius: 10px; background: #0c2250; display: grid; place-items: center; }
+  .demo-brand .lg img { width: 22px; height: 22px; object-fit: contain; }
+  .demo-brand b { display: block; font-size: 13px; color: #fff; }
+  .demo-brand small { font-size: 11px; color: #8a9bbd; }
+  .demo-side .lbl { font-size: 10px; letter-spacing: .18em; color: #6f81a6; padding: 0 8px 8px; font-weight: 700; }
+  .demo-nav { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 12px; color: #c3cfe6; font-weight: 600; font-size: 13px; white-space: nowrap; }
+  .demo-nav .ic { width: 16px; height: 16px; border-radius: 4px; border: 1.5px solid #5b6f99; flex-shrink: 0; }
+  .demo-nav.active { background: linear-gradient(90deg, #2a6df4, #4f6cf0); color: #fff; box-shadow: 0 8px 20px -8px rgba(42,109,244,.8); }
+  .demo-nav.active .ic { border-color: #fff; }
+  .demo-nav .novo { margin-left: auto; background: #2a6df4; color: #fff; font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 999px; letter-spacing: .04em; }
+  .demo-main { min-width: 0; }
+  .demo-top { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #142650; }
+  .demo-top small { display: block; color: #8a9bbd; font-size: 11px; }
+  .demo-top b { font-size: 17px; color: #fff; }
+  .demo-user { display: flex; align-items: center; gap: 10px; color: #c3cfe6; font-size: 13px; }
+  .demo-user span { width: 36px; height: 36px; border-radius: 50%; background: #0c2250; border: 1px solid #2a4a8a; display: grid; place-items: center; font-weight: 800; color: #fff; font-size: 12px; }
+  .demo-body { padding: 20px 24px 18px; }
+  .demo-prog { display: flex; justify-content: space-between; font-size: 12px; color: #c3cfe6; margin-bottom: 8px; }
+  .demo-prog b { color: #fff; }
+  .demo-bar { height: 6px; border-radius: 999px; background: #132448; overflow: hidden; }
+  .demo-bar i { display: block; height: 100%; width: 50%; background: linear-gradient(90deg, #2a6df4, #4f8cff); border-radius: 999px; }
+  .demo-card { margin-top: 16px; border: 1px solid #16284a; border-radius: 16px; background: #07132d; }
+  .demo-q { padding: 18px 22px; border-bottom: 1px solid #16284a; font-size: 15px; line-height: 1.55; color: #eef3ff; }
+  .demo-opts { padding: 16px 22px 10px; display: grid; gap: 10px; }
+  .demo-opt { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 14px 16px; border-radius: 14px; border: 1px solid #1a2d55; background: #081a3c; color: #e6edf7; font-family: inherit; font-size: 14px; cursor: pointer; transition: border-color .15s, background .15s; position: relative; }
+  .demo-opt .l { width: 34px; height: 34px; border-radius: 50%; background: #0d2149; border: 1px solid #24406f; display: grid; place-items: center; font-weight: 800; font-size: 12px; color: #9fb3d9; flex-shrink: 0; }
+  .demo-opt:not(:disabled):hover { border-color: #2a6df4; background: #0b2150; }
+  .demo-opt.sel { border-color: #4f8cff; background: #0b2150; }
+  .demo-opt.sel .l { background: #2a6df4; border-color: #2a6df4; color: #fff; }
+  .demo-opt.ok { border-color: #1f8a5a; background: #0a2a22; }
+  .demo-opt.ok .l { border-color: #22c55e; color: #22c55e; }
+  .demo-opt.bad { border-color: #8a2030; background: #2a0f1a; }
+  .demo-opt.bad .l { border-color: #ef4466; color: #ef4466; }
+  .demo-opt .mark { margin-left: auto; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid currentColor; display: none; place-items: center; font-size: 11px; font-weight: 800; }
+  .demo-opt.ok .mark { display: grid; color: #22c55e; }
+  .demo-opt.bad .mark { display: grid; color: #ef4466; }
+  .demo-opt:disabled { cursor: default; }
+  .demo-opt:disabled:not(.ok):not(.bad) { opacity: .6; }
+  .demo-confirm { margin: 8px 22px 18px; width: calc(100% - 44px); padding: 14px; border-radius: 12px; border: 0; background: #2a6df4; color: #fff; font-weight: 700; font-size: 14px; font-family: inherit; cursor: pointer; transition: opacity .15s; }
+  .demo-confirm:disabled { background: #3a4a6a; color: #c3cfe6; cursor: not-allowed; }
+  .demo-result { margin: 0 22px 12px; border-radius: 12px; padding: 16px 18px; display: flex; gap: 12px; align-items: flex-start; }
+  .demo-result.ok { background: #0a2a22; border: 1px solid #1f8a5a; }
+  .demo-result.bad { background: #2a0f1a; border: 1px solid #8a2030; }
+  .demo-result .ri { width: 26px; height: 26px; border-radius: 50%; border: 2px solid currentColor; display: grid; place-items: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
+  .demo-result.ok, .demo-result.ok .ri { color: #4ade80; }
+  .demo-result.bad, .demo-result.bad .ri { color: #f87171; }
+  .demo-result b { display: block; font-size: 16px; }
+  .demo-result small { font-size: 12.5px; font-weight: 600; }
+  .demo-box { margin: 0 22px 12px; border: 1px solid #16284a; border-radius: 12px; background: #07132d; padding: 16px 18px; }
+  .demo-box .t { font-size: 11px; letter-spacing: .14em; font-weight: 800; color: #8a9bbd; margin-bottom: 10px; }
+  .demo-box p { margin: 0 0 10px; font-size: 13.5px; line-height: 1.65; color: #d5dff2; }
+  .demo-box p:last-child { margin-bottom: 0; }
+  .demo-box .alt { display: grid; gap: 8px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #16284a; }
+  .demo-box .alt p { margin: 0; font-size: 13px; }
+  .demo-box .alt b { color: #fff; }
+  .demo-footnav { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 6px 22px 18px; }
+  .demo-footnav span { padding: 13px; border-radius: 12px; text-align: center; font-weight: 700; font-size: 14px; }
+  .demo-footnav .prev { border: 1px solid #1a2d55; color: #c3cfe6; }
+  .demo-footnav .next { background: #fff; color: #0b1a3a; }
+  .demo-report { padding: 0 22px 18px; font-size: 12px; color: #6f81a6; }
+  .demo-cta { text-align: center; margin-top: 28px; }
+  @media (max-width: 880px) {
+    .demo-app { grid-template-columns: 1fr; }
+    .demo-side { display: none; }
+    .demo-top, .demo-body { padding-left: 14px; padding-right: 14px; }
+    .demo-q, .demo-opts { padding-left: 14px; padding-right: 14px; }
+    .demo-confirm { margin-left: 14px; margin-right: 14px; width: calc(100% - 28px); }
+    .demo-result, .demo-box { margin-left: 14px; margin-right: 14px; }
+    .demo-footnav, .demo-report { padding-left: 14px; padding-right: 14px; }
+    .demo-opt { min-height: 44px; }
+  }
+
   /* WhatsApp float */
   .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: #25D366; color: white; display: grid; place-items: center; box-shadow: 0 12px 28px -8px rgba(37,211,102,0.55); transition: transform .2s; }
   .wa-float:hover { transform: scale(1.06); }
@@ -595,7 +672,7 @@
           Começar minha preparação agora
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a class="btn btn-ghost btn-lg" href="#como" data-event="click_ver_como_funciona">Ver a plataforma por dentro</a>
+        <a class="btn btn-ghost btn-lg" href="#demo" data-event="click_ver_como_funciona">Ver a plataforma por dentro</a>
       </div>
       <p style="margin-top: 18px; font-size: 13px; color: var(--muted);">
         <svg style="display:inline;vertical-align:middle;margin-right:4px;" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -945,6 +1022,82 @@
   </div>
 </section>
 
+<!-- ============= DEMO REAL ============= -->
+<section class="demo-wrap" id="demo">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span>A plataforma por dentro</span>
+      <h2 style="margin-top: 18px;">Resolva uma questão real, exatamente como no portal do aluno</h2>
+      <p>Esta é a tela que você vai usar todos os dias. Escolha uma alternativa, confirme e veja o comentário completo.</p>
+    </div>
+
+    <div class="demo-app reveal" id="demo-app">
+      <aside class="demo-side" aria-hidden="true">
+        <div class="demo-brand">
+          <div class="lg"><img src="img/logo-icon.png" alt="" onerror="this.style.display='none'"></div>
+          <div><b>Anestesia Questões</b><small>Área do Aluno</small></div>
+        </div>
+        <div class="lbl">NAVEGAÇÃO</div>
+        <div class="demo-nav"><span class="ic"></span>Início</div>
+        <div class="demo-nav"><span class="ic"></span>Estudo de hoje</div>
+        <div class="demo-nav active"><span class="ic"></span>Simulados</div>
+        <div class="demo-nav"><span class="ic"></span>Flashcards<span class="novo">NOVO</span></div>
+        <div class="demo-nav"><span class="ic"></span>Caderno de E…<span class="novo">NOVO</span></div>
+        <div class="demo-nav"><span class="ic"></span>Assinatura</div>
+        <div class="demo-nav"><span class="ic"></span>Perfil</div>
+        <div class="demo-nav"><span class="ic"></span>Metas diárias</div>
+      </aside>
+
+      <div class="demo-main">
+        <div class="demo-top">
+          <div><small>Questão 4 de 8</small><b>Questões novas</b></div>
+          <div class="demo-user">Você<span>VC</span></div>
+        </div>
+        <div class="demo-body">
+          <div class="demo-prog"><span>Questão <b>4</b> de <b>8</b></span><b>50%</b></div>
+          <div class="demo-bar"><i></i></div>
+
+          <div class="demo-card">
+            <div class="demo-q">(TEA-2023) Qual das seguintes condições é uma contraindicação absoluta para realização de litotripsia extracorpórea?</div>
+            <div class="demo-opts" id="demo-opts">
+              <button type="button" class="demo-opt" data-i="0"><span class="l">A</span>Paciente portador de marca-passo.<span class="mark"></span></button>
+              <button type="button" class="demo-opt" data-i="1"><span class="l">B</span>Presença de prótese ortopédica.<span class="mark"></span></button>
+              <button type="button" class="demo-opt" data-i="2"><span class="l">C</span>Obesidade grau III.<span class="mark"></span></button>
+              <button type="button" class="demo-opt" data-i="3"><span class="l">D</span>Gravidez.<span class="mark"></span></button>
+            </div>
+            <button type="button" class="demo-confirm" id="demo-confirm" disabled>Confirmar resposta</button>
+
+            <div id="demo-feedback" hidden>
+              <div class="demo-result" id="demo-result">
+                <span class="ri" id="demo-ri"></span>
+                <div><b id="demo-rt"></b><small id="demo-rs"></small></div>
+              </div>
+              <div class="demo-box">
+                <div class="t">COMENTÁRIO</div>
+                <p>A litotripsia extracorpórea por ondas de choque concentra energia acústica sobre o cálculo, e as contraindicações absolutas derivam de duas preocupações: estruturas que não devem receber a energia e situações em que a fragmentação seria inútil ou perigosa.</p>
+                <p>A gravidez é a contraindicação absoluta mais categórica, pelo risco de malformações e aborto decorrentes tanto das ondas de choque quanto da radiação empregada na localização do cálculo. Em mulheres em idade fértil, a recomendação é afastar ativamente a possibilidade de gestação antes do procedimento. Compõem a mesma lista os distúrbios da coagulação — as ondas produzem lesão parenquimatosa renal e hematoma perirrenal —, a hipertensão arterial não controlada, pelo mesmo risco hemorrágico, a infecção ativa do trato urinário, pelo risco de sepse ao liberar bactérias do interior do cálculo fragmentado, e a obstrução urinária distal, que impediria a eliminação dos fragmentos.</p>
+                <p>É importante separar essas situações das limitações relativas, que exigem planejamento e não proibição. O marca-passo é o exemplo clássico: as ondas de choque podem inibir ou danificar o dispositivo, de modo que se deve avaliar tipo e condição do gerador, posicionar o paciente com o dispositivo fora do campo das ondas e ter disponíveis recursos para reprogramação ou implante de marca-passo externo. Do mesmo modo, próteses ortopédicas pedem apenas cuidado com o posicionamento, e a obesidade impõe dificuldade de focalização e de acoplamento, não vedação ao método.</p>
+                <div class="alt">
+                  <p><b>Gravidez — correta.</b> Contraindicação absoluta, pelo risco de malformações e aborto associado às ondas de choque e à radiação de localização.</p>
+                  <p><b>Paciente portador de marca-passo — incorreta.</b> Exige avaliação e posicionamento adequados, não constituindo contraindicação absoluta.</p>
+                  <p><b>Presença de prótese ortopédica — incorreta.</b> Demanda apenas cuidado para mantê-la fora da trajetória das ondas.</p>
+                  <p><b>Obesidade grau III — incorreta.</b> Configura dificuldade técnica relativa, sem proibir o procedimento.</p>
+                </div>
+              </div>
+              <div class="demo-footnav" aria-hidden="true"><span class="prev">‹ Anterior</span><span class="next">Próxima ›</span></div>
+              <div class="demo-report" aria-hidden="true">⚑ Reportar erro nesta questão</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="demo-cta reveal">
+      <a class="btn btn-primary btn-lg" href="#planos">Quero treinar com 3.500+ questões assim</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============= TEMAS ============= -->
 <section id="temas" style="background: var(--sky-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
   <div class="container">
@@ -1209,6 +1362,36 @@
     const update = () => { const show = pastHero && !onPlans; bar.classList.toggle('show', show); bar.setAttribute('aria-hidden', String(!show)); document.body.classList.toggle('has-sticky', show); };
     new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting && e.boundingClientRect.bottom < 0; update(); }, { threshold: 0 }).observe(hero);
     new IntersectionObserver(([e]) => { onPlans = e.isIntersecting; update(); }, { threshold: 0.15 }).observe(plans);
+  })();
+
+  // Demo real da questão (portal)
+  (function () {
+    const CORRECT = 3;
+    const opts = [...document.querySelectorAll('#demo-opts .demo-opt')];
+    const confirm = document.getElementById('demo-confirm');
+    const fb = document.getElementById('demo-feedback');
+    if (!opts.length || !confirm || !fb) return;
+    let sel = null;
+    opts.forEach(b => b.addEventListener('click', () => {
+      sel = Number(b.dataset.i);
+      opts.forEach(o => o.classList.toggle('sel', o === b));
+      confirm.disabled = false;
+    }));
+    confirm.addEventListener('click', () => {
+      if (sel === null) return;
+      opts.forEach(o => { o.disabled = true; o.classList.remove('sel'); });
+      opts[CORRECT].classList.add('ok'); opts[CORRECT].querySelector('.mark').textContent = '✓';
+      const hit = sel === CORRECT;
+      if (!hit) { opts[sel].classList.add('bad'); opts[sel].querySelector('.mark').textContent = '✕'; }
+      const res = document.getElementById('demo-result');
+      res.className = 'demo-result ' + (hit ? 'ok' : 'bad');
+      document.getElementById('demo-ri').textContent = hit ? '✓' : '✕';
+      document.getElementById('demo-rt').textContent = hit ? 'Você acertou!' : 'Você errou.';
+      document.getElementById('demo-rs').textContent = hit ? '' : 'A resposta correta é a alternativa D';
+      confirm.hidden = true;
+      fb.hidden = false;
+      fb.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
   })();
 
   // FAQ accordion
