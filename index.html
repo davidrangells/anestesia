@@ -317,7 +317,12 @@
   .sf-progress-label { font-size: 10px; font-weight: 600; color: var(--ink-2); }
   .sf-progress-bar { height: 6px; background: var(--line-2); border-radius: 99px; margin-top: 5px; }
   .sf-progress-bar .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--blue-2), var(--blue)); }
-  @media (max-width: 880px) { .screenshots-grid { grid-template-columns: 1fr; } .screenshots-frames { max-width: 400px; margin: 0 auto; } }
+  @media (max-width: 880px) {
+    .screenshots-grid { grid-template-columns: 1fr; }
+    /* Mobile: uma tela abaixo da outra, em tamanho legível */
+    .screenshots-frames { grid-template-columns: 1fr; gap: 22px; max-width: 340px; margin: 0 auto; }
+    .screen-frame { aspect-ratio: auto; }
+  }
 
   /* App-style screen mocks */
   .sf-ios-bar { display:flex; align-items:center; justify-content:space-between; padding:9px 12px 8px; background:white; border-bottom:1px solid var(--line-2); flex-shrink:0; }
