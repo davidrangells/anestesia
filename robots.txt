@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /boas-vindas
+Disallow: /processando
+Disallow: /sucesso
+
+Sitemap: https://anestesiaquestoes.com.br/sitemap.xml
