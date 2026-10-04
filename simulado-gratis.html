@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<link rel="icon" href="img/logo-icon.png" type="image/png" />
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simulado Gratuito de Anestesiologia | Anestesia Questões</title>
+<meta name="description" content="Responda 5 questões reais de provas de anestesiologia (TEA, TSA e Residência) com comentários e receba seu diagnóstico por tema. Grátis." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#2A6DF4" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Anestesia Questões" />
+<meta property="og:title" content="Simulado Gratuito de Anestesiologia — 5 questões reais comentadas" />
+<meta property="og:description" content="Teste seu nível para TEA, TSA e Residência e descubra seus pontos fracos. Grátis, direto no navegador." />
+<meta property="og:image" content="https://anestesiaquestoes.com.br/img/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2A6DF4;--blue-3:#1e3a8a;--ink:#0b1a3a;--ink-2:#2d3c5c;--muted:#5a6a85;--line:#dfe6f2;--line-2:#e8edf6;--sky:#eef4ff;--sky-2:#f5f8ff;--ok:#16a34a;--bad:#dc2626;--r:16px}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:linear-gradient(180deg,#f5f8ff,#eef3fd 420px,#f8fafd);color:var(--ink);min-height:100vh}
+.container{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:22px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;justify-content:center}
+.brand img{width:34px;height:34px;border-radius:9px}
+.brand b{color:var(--blue)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-3)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+h1{font-size:clamp(28px,5.5vw,40px);line-height:1.12;letter-spacing:-.025em;margin:16px 0 12px}
+h1 em{font-style:normal;color:var(--blue)}
+.lede{color:var(--muted);font-size:16.5px;line-height:1.6;max-width:560px;margin:0 auto}
+.hero{text-align:center;padding:14px 0 26px}
+.bullets{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:18px}
+.bullets span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--ink-2)}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 60px -30px rgba(11,26,58,.25);padding:28px;margin:8px 0 40px}
+label{display:block;font-size:13px;font-weight:700;margin:14px 0 6px}
+input[type=text],input[type=email],input[type=tel]{width:100%;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font-size:15px;font-family:inherit;background:var(--sky-2)}
+input:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.5}
+.consent input{margin-top:2px;width:16px;height:16px}
+.consent a{color:var(--blue);font-weight:600}
+.btn{display:flex;width:100%;justify-content:center;align-items:center;gap:8px;border:0;border-radius:13px;background:var(--blue);color:#fff;font-weight:800;font-size:16px;padding:15px;font-family:inherit;cursor:pointer;margin-top:18px;transition:transform .15s,box-shadow .15s;text-decoration:none}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 30px -12px rgba(42,109,244,.6)}
+.btn:disabled{background:#9ba8be;cursor:not-allowed;transform:none;box-shadow:none}
+.btn.green{background:#16a34a}
+.micro{text-align:center;font-size:12px;color:var(--muted);margin-top:12px}
+.err{display:none;background:#fdf0ef;border:1px solid #f5c9c5;color:#b91c1c;border-radius:10px;padding:10px 14px;font-size:13px;margin-top:14px}
+.hp{position:absolute;left:-9999px;opacity:0}
+/* quiz */
+.prog{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:8px}
+.bar{height:6px;border-radius:999px;background:var(--line-2);overflow:hidden;margin-bottom:20px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),#4f8cff);border-radius:999px;transition:width .3s}
+.qtag{display:inline-block;background:var(--sky);color:var(--blue-3);font-weight:700;font-size:12px;padding:5px 11px;border-radius:999px;margin-bottom:12px}
+.qtext{font-size:17px;font-weight:700;line-height:1.5;margin-bottom:16px}
+.opt{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;padding:14px 15px;border-radius:13px;border:1px solid var(--line);background:#fff;font-family:inherit;font-size:14.5px;color:var(--ink-2);cursor:pointer;margin-bottom:9px;transition:border-color .15s,background .15s;line-height:1.45}
+.opt .l{width:28px;height:28px;border-radius:50%;background:var(--sky-2);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:12px;color:var(--muted);flex-shrink:0}
+.opt:not(:disabled):hover{border-color:var(--blue);background:var(--sky-2)}
+.opt.sel{border-color:var(--blue);background:var(--sky)}
+.opt.sel .l{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt.ok{border-color:#bfe8d2;background:#f1faf5;color:#14532d;font-weight:600}
+.opt.ok .l{background:var(--ok);border-color:var(--ok);color:#fff}
+.opt.bad{border-color:#f3c4c4;background:#fdf0ef;color:#991b1b}
+.opt.bad .l{background:var(--bad);border-color:var(--bad);color:#fff}
+.opt:disabled{cursor:default}
+.feedback{border-radius:13px;padding:14px 16px;font-weight:700;margin:14px 0 10px;display:flex;gap:10px;align-items:center}
+.feedback.ok{background:#f1faf5;border:1px solid #bfe8d2;color:#14532d}
+.feedback.bad{background:#fdf0ef;border:1px solid #f3c4c4;color:#991b1b}
+.comment{background:var(--sky-2);border:1px solid var(--line);border-radius:13px;padding:16px 18px;font-size:13.5px;line-height:1.65;color:var(--ink-2)}
+.comment .t{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--muted);margin-bottom:8px}
+.comment p{margin-bottom:10px}.comment p:last-child{margin-bottom:0}
+/* resultado */
+.score{text-align:center;padding:6px 0 18px}
+.ring{width:132px;height:132px;margin:0 auto 10px;position:relative}
+.ring svg{transform:rotate(-90deg)}
+.ring .v{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;font-weight:800}
+.score p{color:var(--muted);font-size:14.5px}
+.tema{margin:10px 0}
+.tema .k{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;margin-bottom:5px}
+.tema .bar{margin-bottom:0}
+.tema .bar i.low{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.sellbox{background:linear-gradient(135deg,#0b1a3a,#132c5e);color:#fff;border-radius:18px;padding:24px;margin-top:22px;text-align:center}
+.sellbox b{font-size:19px;display:block;margin-bottom:8px}
+.sellbox p{font-size:14px;color:#c3cfe6;line-height:1.6;margin-bottom:4px}
+.sellbox .price{font-size:14px;color:#9fb3d9;margin-top:10px}
+.sellbox .price strong{color:#fff;font-size:17px}
+.wa{display:block;text-align:center;margin-top:14px;font-size:14px;color:var(--blue);font-weight:700;text-decoration:none}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 34px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header><div class="container"><div class="brand"><img src="img/logo-icon.png" alt="">Anestesia <b>Questões</b></div></div></header>
+
+<main class="container">
+  <!-- ETAPA 1: captura -->
+  <section id="step-form">
+    <div class="hero">
+      <span class="eyebrow"><span class="dot"></span>Simulado gratuito</span>
+      <h1>Descubra se você passaria na prova <em>hoje</em></h1>
+      <p class="lede">Responda 5 questões reais de provas de anestesiologia (TEA, TSA e Residência) com gabarito comentado e receba seu diagnóstico por tema — grátis, direto no navegador.</p>
+      <div class="bullets"><span>✓ Questões de provas reais</span><span>✓ Comentários completos</span><span>✓ Diagnóstico por tema</span></div>
+    </div>
+    <form class="card" id="lead-form" novalidate>
+      <strong style="font-size:17px;">Comece agora — leva 5 minutos</strong>
+      <label for="f-nome">Seu nome</label>
+      <input type="text" id="f-nome" autocomplete="name" placeholder="Nome e sobrenome" required>
+      <label for="f-email">E-mail</label>
+      <input type="email" id="f-email" autocomplete="email" placeholder="voce@email.com" required>
+      <label for="f-wpp">WhatsApp</label>
+      <input type="tel" id="f-wpp" autocomplete="tel" placeholder="(11) 99999-9999" required>
+      <input type="text" name="site" id="f-site" class="hp" tabindex="-1" autocomplete="off">
+      <div class="consent"><input type="checkbox" id="f-consent"><span>Autorizo o contato da Anestesia Questões por e-mail e WhatsApp e concordo com a <a href="privacidade" target="_blank">Política de Privacidade</a>.</span></div>
+      <div class="err" id="form-err"></div>
+      <button class="btn" type="submit" id="btn-start" data-event="lead_start">Começar o simulado →</button>
+      <p class="micro">Seus dados ficam seguros. Sem spam — só conteúdo de anestesiologia.</p>
+    </form>
+  </section>
+
+  <!-- ETAPA 2: quiz -->
+  <section id="step-quiz" class="hidden">
+    <div class="card">
+      <div class="prog"><span id="q-count"></span><span id="q-pct"></span></div>
+      <div class="bar"><i id="q-bar" style="width:0%"></i></div>
+      <span class="qtag" id="q-tag"></span>
+      <div class="qtext" id="q-text"></div>
+      <div id="q-opts"></div>
+      <button class="btn" id="btn-confirm" disabled>Confirmar resposta</button>
+      <div id="q-after" class="hidden">
+        <div class="feedback" id="q-fb"></div>
+        <div class="comment"><div class="t">COMENTÁRIO</div><div id="q-comment"></div></div>
+        <button class="btn" id="btn-next">Próxima →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETAPA 3: resultado -->
+  <section id="step-result" class="hidden">
+    <div class="card">
+      <div class="score">
+        <div class="ring">
+          <svg width="132" height="132"><circle cx="66" cy="66" r="56" fill="none" stroke="#e8edf6" stroke-width="12"/><circle id="ring-fg" cx="66" cy="66" r="56" fill="none" stroke="#16a34a" stroke-width="12" stroke-linecap="round" stroke-dasharray="0 352"/></svg>
+          <div class="v" id="r-pct"></div>
+        </div>
+        <strong style="font-size:20px;" id="r-title"></strong>
+        <p id="r-sub"></p>
+      </div>
+      <div id="r-temas"></div>
+      <div class="sellbox">
+        <b id="r-hook"></b>
+        <p>No Anestesia Questões você treina com <strong>4.200+ questões comentadas</strong>, simulados por tema, flashcards e caderno de erros — e acompanha exatamente onde precisa melhorar.</p>
+        <p class="price">12× de <strong>R$ 87,33</strong> sem juros · 7 dias de garantia</p>
+        <a class="btn green" id="btn-checkout" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="lead_checkout">Quero treinar com o banco completo →</a>
+      </div>
+      <a class="wa" href="https://wa.me/5515991008159?text=Ol%C3%A1%21%20Fiz%20o%20simulado%20gratuito%20e%20quero%20saber%20mais%20sobre%20a%20plataforma." target="_blank" rel="noopener noreferrer" data-event="lead_whatsapp">Prefere tirar uma dúvida? Fale com a gente no WhatsApp</a>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Anestesia Questões · CNPJ 45.177.293/0001-15</footer>
+
+<script>
+  window.GA_ID = "";
+  if (window.GA_ID) {
+    var gs=document.createElement("script");gs.async=true;gs.src="https://www.googletagmanager.com/gtag/js?id="+window.GA_ID;document.head.appendChild(gs);
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config",window.GA_ID);
+  }
+  document.addEventListener("click",function(e){var el=e.target.closest("[data-event]");if(!el)return;if(typeof gtag==="function")gtag("event",el.getAttribute("data-event"));},{passive:true});
+</script>
+<script>
+const API = "https://app.anestesiaquestoes.com.br/api/leads";
+const QUESTOES = [
+  {
+    tag: "TEA-2023 · Anestesia para urologia", tema: "Contraindicações e segurança",
+    q: "Qual das seguintes condições é uma contraindicação absoluta para realização de litotripsia extracorpórea?",
+    opts: ["Paciente portador de marca-passo.", "Presença de prótese ortopédica.", "Obesidade grau III.", "Gravidez."],
+    correct: 3,
+    c: "<p>A litotripsia extracorpórea por ondas de choque concentra energia acústica sobre o cálculo, e as contraindicações absolutas derivam de duas preocupações: estruturas que não devem receber a energia e situações em que a fragmentação seria inútil ou perigosa.</p><p>A <strong>gravidez</strong> é a contraindicação absoluta mais categórica, pelo risco de malformações e aborto decorrentes tanto das ondas de choque quanto da radiação empregada na localização do cálculo. Compõem a mesma lista os distúrbios da coagulação, a hipertensão não controlada, a infecção ativa do trato urinário e a obstrução urinária distal.</p><p>Marca-passo, próteses ortopédicas e obesidade são limitações <em>relativas</em>: exigem planejamento e posicionamento adequados, não proibição.</p>"
+  },
+  {
+    tag: "Anestésicos locais", tema: "Anestésicos locais",
+    q: "Paciente de 68 kg recebe bloqueio de plexo braquial com 30 mL de bupivacaína 0,5%. Qual é a dose total administrada, em mg/kg?",
+    opts: ["1,8 mg/kg", "2,2 mg/kg", "3,0 mg/kg", "4,4 mg/kg"],
+    correct: 1,
+    c: "<p>Bupivacaína 0,5% = 5 mg/mL. 30 mL × 5 mg/mL = 150 mg. Em um paciente de 68 kg: 150 ÷ 68 ≈ <strong>2,2 mg/kg</strong> — próximo do limite máximo recomendado da bupivacaína sem vasoconstritor.</p>"
+  },
+  {
+    tag: "ME1-2019 · Farmacologia", tema: "Farmacologia",
+    q: "A adição do EDTA em algumas soluções de propofol visa o(a):",
+    opts: ["Ajuste da tonicidade da formulação com o plasma", "Inibição do crescimento bacteriano na formulação", "Diluição do hipnótico no meio lipídico", "Emulsificação do componente lipídico em meio aquoso"],
+    correct: 1,
+    c: "<p>O propofol (2,6-diisopropilfenol) é altamente lipossolúvel. Sua formulação em emulsão lipídica (óleo de soja, glicerol, lecitina de ovo) é excelente meio de cultura para microrganismos. O <strong>EDTA atua como bacteriostático</strong>, sequestrando íons metálicos necessários ao metabolismo bacteriano.</p>"
+  },
+  {
+    tag: "ME2-2005 · Anestesia regional", tema: "Anestesia regional",
+    q: "A principal inervação da região plantar é dada pelo nervo:",
+    opts: ["Fibular superficial", "Fibular profundo", "Safeno", "Tibial posterior"],
+    correct: 3,
+    c: "<p>A inervação da região plantar é dada pelo <strong>nervo tibial</strong>, enquanto a região dorsal do pé é inervada pelos nervos fibulares. O nervo sural, quando bloqueado, acarreta analgesia na borda lateral do pé; o bloqueio do safeno produz analgesia da borda medial do pé.</p>"
+  },
+  {
+    tag: "ME2-2006 · Hidroeletrolítico", tema: "Equilíbrio hidroeletrolítico",
+    q: "Em relação à hipopotassemia, pode-se afirmar que:",
+    opts: ["A queda de 1 mEq.L-1 no plasma representa uma redução de 200 a 300 mEq no cálcio corporal total", "Quando aguda hiperpolariza a célula cardíaca", "Ocorre quando o potássio corporal total está reduzido", "Se prolongada protege a região intersticial do rim"],
+    correct: 1,
+    c: "<p>A hipopotassemia é complicação frequente do tratamento com diuréticos. Uma queda de 1 mEq.L-1 representa redução aproximada de 200 a 300 mEq no nível total de <strong>potássio</strong> (não de cálcio). Pode ocorrer com o potássio corporal total reduzido, normal ou aumentado. A <strong>hipopotassemia aguda leva à hiperpolarização da célula cardíaca</strong>, podendo causar reentradas, arritmias e condução retardada. Se suficientemente prolongada, pode causar dano intersticial renal crônico.</p>"
+  }
+];
+
+const $=id=>document.getElementById(id);
+let leadId=null, idx=0, sel=null;
+const acertos={}, totais={};
+let hits=0;
+
+const utm={};new URLSearchParams(location.search).forEach((v,k)=>{if(k.startsWith("utm_"))utm[k]=v;});
+// repassa UTMs ao checkout
+(function(){const a=$("btn-checkout");const qs=new URLSearchParams(utm).toString();if(qs)a.href+= (a.href.includes("?")?"&":"?")+qs;})();
+
+$("lead-form").addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  const nome=$("f-nome").value.trim(), email=$("f-email").value.trim(), wpp=$("f-wpp").value.trim();
+  const err=$("form-err");
+  if(nome.length<3||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)||wpp.replace(/\D/g,"").length<10){err.textContent="Confira nome, e-mail e WhatsApp.";err.style.display="block";return;}
+  if(!$("f-consent").checked){err.textContent="Para continuar, autorize o contato (LGPD).";err.style.display="block";return;}
+  err.style.display="none";
+  const btn=$("btn-start");btn.disabled=true;btn.textContent="Carregando…";
+  try{
+    const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nome,email,whatsapp:wpp,consent:true,origem:"simulado-gratis",utm,site:$("f-site").value})});
+    const j=await r.json().catch(()=>({}));
+    if(r.ok&&j.id)leadId=j.id;
+  }catch(_){/* não bloqueia o simulado */}
+  $("step-form").classList.add("hidden");$("step-quiz").classList.remove("hidden");window.scrollTo({top:0});
+  render();
+});
+
+function render(){
+  const q=QUESTOES[idx];sel=null;
+  $("q-count").textContent=`Questão ${idx+1} de ${QUESTOES.length}`;
+  $("q-pct").textContent=Math.round(idx/QUESTOES.length*100)+"%";
+  $("q-bar").style.width=(idx/QUESTOES.length*100)+"%";
+  $("q-tag").textContent=q.tag;$("q-text").textContent=q.q;
+  $("q-opts").innerHTML=q.opts.map((o,i)=>`<button type="button" class="opt" data-i="${i}"><span class="l">${"ABCD"[i]}</span><span>${o}</span></button>`).join("");
+  $("btn-confirm").disabled=true;$("btn-confirm").classList.remove("hidden");$("q-after").classList.add("hidden");
+  document.querySelectorAll("#q-opts .opt").forEach(b=>b.addEventListener("click",()=>{sel=+b.dataset.i;document.querySelectorAll("#q-opts .opt").forEach(o=>o.classList.toggle("sel",o===b));$("btn-confirm").disabled=false;}));
+}
+
+$("btn-confirm").addEventListener("click",()=>{
+  const q=QUESTOES[idx];if(sel===null)return;
+  document.querySelectorAll("#q-opts .opt").forEach(o=>{o.disabled=true;o.classList.remove("sel");});
+  const opts=document.querySelectorAll("#q-opts .opt");
+  opts[q.correct].classList.add("ok");
+  const hit=sel===q.correct;
+  totais[q.tema]=(totais[q.tema]||0)+1;
+  if(hit){hits++;acertos[q.tema]=(acertos[q.tema]||0)+1;}else{opts[sel].classList.add("bad");acertos[q.tema]=acertos[q.tema]||0;}
+  const fb=$("q-fb");fb.className="feedback "+(hit?"ok":"bad");fb.textContent=hit?"✓ Você acertou!":`✕ Você errou. A correta é a ${"ABCD"[q.correct]}.`;
+  $("q-comment").innerHTML=q.c;
+  $("btn-confirm").classList.add("hidden");$("q-after").classList.remove("hidden");
+  $("btn-next").textContent=idx+1<QUESTOES.length?"Próxima →":"Ver meu diagnóstico →";
+});
+
+$("btn-next").addEventListener("click",()=>{
+  idx++;
+  if(idx<QUESTOES.length){render();window.scrollTo({top:0,behavior:"smooth"});return;}
+  finish();
+});
+
+async function finish(){
+  $("step-quiz").classList.add("hidden");$("step-result").classList.remove("hidden");window.scrollTo({top:0});
+  const pct=Math.round(hits/QUESTOES.length*100);
+  $("r-pct").textContent=pct+"%";
+  const fg=$("ring-fg");const circ=2*Math.PI*56;fg.setAttribute("stroke-dasharray",`${circ*pct/100} ${circ}`);fg.setAttribute("stroke",pct>=60?"#16a34a":pct>=40?"#f59e0b":"#ef4444");
+  $("r-title").textContent=pct>=80?"Excelente nível!":pct>=60?"Bom caminho — dá para subir":pct>=40?"Atenção: há lacunas importantes":"Sinal de alerta";
+  $("r-sub").textContent=`Você acertou ${hits} de ${QUESTOES.length} questões.`;
+  const fracos=Object.keys(totais).filter(t=>(acertos[t]||0)<totais[t]);
+  $("r-hook").textContent=fracos.length?`Seu ponto fraco: ${fracos.join(", ")}.`:"Agora imagine esse treino com o banco completo.";
+  $("r-temas").innerHTML=Object.keys(totais).map(t=>{
+    const p=Math.round((acertos[t]||0)/totais[t]*100);
+    return `<div class="tema"><div class="k"><span>${t}</span><span>${acertos[t]||0}/${totais[t]}</span></div><div class="bar"><i class="${p<60?"low":""}" style="width:${Math.max(p,6)}%"></i></div></div>`;
+  }).join("");
+  if(typeof gtag==="function")gtag("event","lead_finish",{score:pct});
+  if(leadId){try{await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({leadId,resultado:{acertos:hits,total:QUESTOES.length,porTema:Object.fromEntries(Object.keys(totais).map(t=>[t,{acertos:acertos[t]||0,total:totais[t]}]))}})});}catch(_){}}
+}
+</script>
+</body>
+</html>
