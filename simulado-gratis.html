@@ -14,6 +14,13 @@
 <meta property="og:title" content="Simulado Gratuito de Anestesiologia — 5 questões reais comentadas" />
 <meta property="og:description" content="Teste seu nível para TEA, TSA e Residência e descubra seus pontos fracos. Grátis, direto no navegador." />
 <meta property="og:image" content="https://anestesiaquestoes.com.br/img/og-image.png" />
+<!-- Meta Pixel (Pixel de Vendas, o mesmo da landing e do checkout Eduzz) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','697878191680106');
+  fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=697878191680106&ev=PageView&noscript=1" /></noscript>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -160,12 +167,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 34px}
 <footer>© 2026 Anestesia Questões · CNPJ 45.177.293/0001-15</footer>
 
 <script>
-  window.GA_ID = "";
+  window.GA_ID = "G-PV0R4ZRJ8L";
   if (window.GA_ID) {
     var gs=document.createElement("script");gs.async=true;gs.src="https://www.googletagmanager.com/gtag/js?id="+window.GA_ID;document.head.appendChild(gs);
     window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config",window.GA_ID);
   }
-  document.addEventListener("click",function(e){var el=e.target.closest("[data-event]");if(!el)return;if(typeof gtag==="function")gtag("event",el.getAttribute("data-event"));},{passive:true});
+  document.addEventListener("click",function(e){var el=e.target.closest("[data-event]");if(!el)return;var n=el.getAttribute("data-event");if(typeof gtag==="function")gtag("event",n);if(typeof fbq==="function"){fbq("trackCustom",n);if(n==="lead_checkout")fbq("track","InitiateCheckout");}},{passive:true});
 </script>
 <script>
 const API = "https://app.anestesiaquestoes.com.br/api/leads";
@@ -227,7 +234,7 @@ $("lead-form").addEventListener("submit", async (e)=>{
   try{
     const r=await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nome,email,whatsapp:wpp,consent:true,origem:"simulado-gratis",utm,site:$("f-site").value})});
     const j=await r.json().catch(()=>({}));
-    if(r.ok&&j.id)leadId=j.id;
+    if(r.ok&&j.id){leadId=j.id;if(typeof fbq==="function")fbq("track","Lead");if(typeof gtag==="function")gtag("event","lead_captured");}
   }catch(_){/* não bloqueia o simulado */}
   $("step-form").classList.add("hidden");$("step-quiz").classList.remove("hidden");window.scrollTo({top:0});
   render();
@@ -278,6 +285,7 @@ async function finish(){
     return `<div class="tema"><div class="k"><span>${t}</span><span>${acertos[t]||0}/${totais[t]}</span></div><div class="bar"><i class="${p<60?"low":""}" style="width:${Math.max(p,6)}%"></i></div></div>`;
   }).join("");
   if(typeof gtag==="function")gtag("event","lead_finish",{score:pct});
+  if(typeof fbq==="function")fbq("trackCustom","lead_finish",{score:pct});
   if(leadId){try{await fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({leadId,resultado:{acertos:hits,total:QUESTOES.length,porTema:Object.fromEntries(Object.keys(totais).map(t=>[t,{acertos:acertos[t]||0,total:totais[t]}]))}})});}catch(_){}}
 }
 </script>
