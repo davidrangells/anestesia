@@ -123,13 +123,16 @@
       else found = JSON.parse(sessionStorage.getItem("aq_utm") || "{}");
     } catch (e) {}
     if (!Object.keys(found).length) return;
-    document.querySelectorAll('a[href*="eduzz.com"]').forEach(function (a) {
-      try {
-        var u = new URL(a.href);
-        KEYS.forEach(function (k) { if (found[k] && !u.searchParams.get(k)) u.searchParams.set(k, found[k]); });
-        a.href = u.toString();
-      } catch (e) {}
-    });
+    function apply() {
+      document.querySelectorAll('a[href*="eduzz.com"]').forEach(function (a) {
+        try {
+          var u = new URL(a.href);
+          KEYS.forEach(function (k) { if (found[k] && !u.searchParams.get(k)) u.searchParams.set(k, found[k]); });
+          a.href = u.toString();
+        } catch (e) {}
+      });
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", apply); else apply();
   })();
   // Dispara os data-event da página como eventos do GA4 (cliques em CTA, checkout, WhatsApp)
   document.addEventListener("click", function (e) {
