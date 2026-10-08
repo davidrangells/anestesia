@@ -113,6 +113,24 @@
     var gs = document.createElement("script"); gs.async = true; gs.src = "https://www.googletagmanager.com/gtag/js?id=" + window.GA_ID; document.head.appendChild(gs);
     window.dataLayer = window.dataLayer || []; function gtag(){ dataLayer.push(arguments); } gtag("js", new Date()); gtag("config", window.GA_ID);
   }
+  // Repassa os UTMs da visita para os links do checkout Eduzz (a venda chega ao webhook com a origem)
+  (function () {
+    var KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+    var qs = new URLSearchParams(location.search), found = {};
+    KEYS.forEach(function (k) { var v = qs.get(k); if (v) found[k] = v; });
+    try {
+      if (Object.keys(found).length) sessionStorage.setItem("aq_utm", JSON.stringify(found));
+      else found = JSON.parse(sessionStorage.getItem("aq_utm") || "{}");
+    } catch (e) {}
+    if (!Object.keys(found).length) return;
+    document.querySelectorAll('a[href*="eduzz.com"]').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        KEYS.forEach(function (k) { if (found[k] && !u.searchParams.get(k)) u.searchParams.set(k, found[k]); });
+        a.href = u.toString();
+      } catch (e) {}
+    });
+  })();
   // Dispara os data-event da página como eventos do GA4 (cliques em CTA, checkout, WhatsApp)
   document.addEventListener("click", function (e) {
     var el = e.target.closest("[data-event]"); if (!el) return;
