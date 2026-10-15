@@ -96,6 +96,29 @@ input:focus{outline:2px solid var(--blue);outline-offset:1px;background:#fff}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 34px}
 .hidden{display:none}
 </style>
+<script>
+  // Repassa os UTMs da visita para os links do checkout Eduzz (a venda chega ao webhook com a origem)
+  (function () {
+    var KEYS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"];
+    var qs = new URLSearchParams(location.search), found = {};
+    KEYS.forEach(function (k) { var v = qs.get(k); if (v) found[k] = v; });
+    try {
+      if (Object.keys(found).length) sessionStorage.setItem("aq_utm", JSON.stringify(found));
+      else found = JSON.parse(sessionStorage.getItem("aq_utm") || "{}");
+    } catch (e) {}
+    if (!Object.keys(found).length) return;
+    function apply() {
+      document.querySelectorAll('a[href*="eduzz.com"]').forEach(function (a) {
+        try {
+          var u = new URL(a.href);
+          KEYS.forEach(function (k) { if (found[k] && !u.searchParams.get(k)) u.searchParams.set(k, found[k]); });
+          a.href = u.toString();
+        } catch (e) {}
+      });
+    }
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", apply); else apply();
+  })();
+</script>
 </head>
 <body>
 <header><div class="container"><div class="brand"><img src="img/logo-icon.png" alt="">Anestesia <b>Questões</b></div></div></header>
