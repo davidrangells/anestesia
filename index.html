@@ -219,6 +219,19 @@
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .55s ease, transform .55s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
+
+  /* ---------- Black Friday antecipada (29/10 a 27/11/2026) ---------- */
+  .bf-bar { display:none; background:#071226; color:#fff; font-size:14px; line-height:1.3; }
+  .bf-bar.on { display:block; }
+  .bf-bar .bf-inner { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:10px 16px; }
+  .bf-bar b { color:#34D399; }
+  .bf-bar .bf-code { display:inline-flex; align-items:center; gap:8px; }
+  .bf-bar code { background:#fff; color:#071226; font-weight:800; letter-spacing:.06em; padding:4px 10px; border-radius:8px; font-family:inherit; border:2px dashed #34D399; }
+  .bf-bar button { font:inherit; font-size:12px; font-weight:700; color:#071226; background:#34D399; border:0; border-radius:8px; padding:6px 10px; cursor:pointer; }
+  .bf-bar .bf-timer { font-variant-numeric:tabular-nums; font-weight:700; color:#C9D6EA; }
+  .bf-old { text-decoration:line-through; color:var(--muted); font-weight:600; font-size:.6em; margin-right:8px; }
+  .bf-tag { display:inline-block; background:#071226; color:#34D399; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; padding:4px 10px; border-radius:999px; margin-bottom:8px; }
+  @media (max-width:640px){ .bf-bar .bf-inner{ gap:8px; padding:8px 12px; } .bf-bar .bf-timer{ width:100%; text-align:center; } }
   /* ---------- Nav ---------- */
   .nav {
     position: sticky; top: 0; z-index: 60;
@@ -743,6 +756,7 @@
 <body>
 
 <!-- ============= NAV ============= -->
+<div class="bf-bar" id="bf-bar"><div class="bf-inner"><span><b>Black Antecipada:</b> 30% OFF na assinatura até 27/11</span><span class="bf-code">cupom <code id="bf-code">BLACKF30</code><button type="button" id="bf-copy" data-event="click_bf_copy">Copiar</button></span><span class="bf-timer" id="bf-timer"></span></div></div>
 <header class="nav">
   <div class="container nav-inner">
     <a class="brand" href="#top">
@@ -1222,17 +1236,18 @@
         <div class="plan-inner">
           <div class="plan-col-price">
             <div class="tier">Anestesia Questões</div>
+            <div class="bf-tag" id="bf-tag" hidden>Black Antecipada · 30% OFF com BLACKF30</div>
             <h3>Preparação completa</h3>
             <p class="summary">Para residentes, candidatos ao TEA e ao TSA e anestesiologistas que querem estudar com direção.</p>
             <div class="price-row">
               <div class="price-label">12× de</div>
               <div class="price-main">
                 <span class="currency">R$</span>
-                <span class="amount">87,33</span>
+                <span class="amount" id="plan-amount">87,33</span>
                 <span class="per">sem juros</span>
               </div>
             </div>
-            <div class="install">ou R$ 1.048,00 à vista no Pix</div>
+            <div class="install" id="plan-install">ou R$ 1.048,00 à vista no Pix</div>
             <a class="btn btn-primary btn-lg" href="https://chk.eduzz.com/1717250" target="_blank" rel="noopener noreferrer" data-event="outbound_checkout_click" data-plan="anestesia_questoes">Assinar agora</a>
             <div class="guarantee-note">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -1577,6 +1592,27 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+</script>
+<script>
+  // Black Friday antecipada: liga a faixa, o contador e o preço promocional só dentro da janela.
+  (function () {
+    var START = new Date("2026-10-29T00:00:00-03:00"), END = new Date("2026-11-28T00:00:00-03:00"), now = new Date();
+    if (now < START || now >= END) return;
+    document.addEventListener("DOMContentLoaded", function () {
+      var bar = document.getElementById("bf-bar"); if (bar) bar.classList.add("on");
+      var tag = document.getElementById("bf-tag"); if (tag) tag.hidden = false;
+      var amt = document.getElementById("plan-amount"); if (amt) amt.innerHTML = '<span class="bf-old">87,33</span>61,13';
+      var inst = document.getElementById("plan-install"); if (inst) inst.textContent = "ou R$ 733,60 à vista no Pix · com o cupom BLACKF30 no checkout";
+      document.querySelectorAll(".sticky-cta .sc-price strong").forEach(function (el) { el.textContent = "12× R$ 61,13 com BLACKF30"; });
+      document.querySelectorAll(".sticky-cta .sc-price span").forEach(function (el) { el.textContent = "ou R$ 733,60 à vista · até 27/11"; });
+      var btn = document.getElementById("bf-copy"); if (btn) btn.addEventListener("click", function () {
+        try { navigator.clipboard.writeText("BLACKF30"); btn.textContent = "Copiado!"; setTimeout(function () { btn.textContent = "Copiar"; }, 2000); } catch (e) {}
+      });
+      var t = document.getElementById("bf-timer");
+      function tick() { var d = END - new Date(); if (d <= 0) { bar.classList.remove("on"); return; } var h = Math.floor(d/36e5), m = Math.floor(d%36e5/6e4), s2 = Math.floor(d%6e4/1e3); var days = Math.floor(h/24); t.textContent = (days > 0 ? days + "d " : "") + String(h%24).padStart(2,"0") + ":" + String(m).padStart(2,"0") + ":" + String(s2).padStart(2,"0") + " para acabar"; }
+      if (t) { tick(); setInterval(tick, 1000); }
+    });
+  })();
 </script>
 </body>
 </html>
